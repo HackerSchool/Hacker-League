@@ -1,19 +1,31 @@
 // Import necessary modules
 import { checkLogin, login, logout } from "/js/modules/auth.js";
 import { getFromLocalStorage, storeInLocalStorage } from "/js/modules/utils.js";
-import { 
-    displayUserRole, 
-    fetchUserData, 
-    uploadUserLogo, 
-    displayUserLogo, 
-    uploadUserFormData, 
-    populateFormWithUserData 
+import {
+    displayUserRole,
+    fetchUserData,
+    uploadUserLogo,
+    displayUserLogo,
+    uploadUserFormData,
+    populateFormWithUserData,
+    getAllUsers
 } from "/js/modules/user.js";
 
 // Main page handler (/)
 async function handleMainPage() {
     await handleLoginRedirect();
     displayUserRole();
+    showMembers();
+}
+
+async function showMembers() {
+    const members = await getAllUsers();
+    console.log(members);
+    var members_div = document.getElementById('members');
+    members_div.innerHTML += "<h2> Here's all the members brother </h2>";
+    members.forEach(member => {
+        members_div.innerHTML += `<p> ${member.name} </p>`;
+    });
 }
 
 // Login page handler (/login)
@@ -23,6 +35,9 @@ function handleLoginPage() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         login(username, password);
+    });
+    document.getElementById('fenixOauthButton').addEventListener('click', () => {
+        window.location.href = '/api/fenix-auth'; // Redirect to the OAuth endpoint
     });
 }
 
