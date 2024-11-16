@@ -28,7 +28,7 @@ export async function getAllUsers() {
 
 export async function registerUser(userData){
     try {
-        const response = await apiRequest(`/members`, 'POST', userData)
+        const response = await apiRequest(`/members/register`, 'POST', userData)
         return response
     } catch (error) {
         console.error('Error registering User', error);

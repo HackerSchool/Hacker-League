@@ -16,7 +16,7 @@ import {
 async function handleMainPage() {
     await handleLoginRedirect();
     displayUserRole();
-    // showMembers();
+    showMembers();
 }
 
 async function showMembers() {
@@ -154,7 +154,7 @@ async function handleRegister() {
         const formElements = event.target.elements; // Access form inputs via the event
         const userData = {
             ist_id: formElements['istId'].value,
-            member_number: formElements['memberId'].value, // Assuming it's the same as ist_id
+            member_number: Number(formElements['memberId'].value), // Assuming it's the same as ist_id
             name: formElements['name'].value,
             username: formElements['username'].value.split(' ')[0], // First part of the name as username (example logic)
             password: formElements['password'] ? formElements['password'].value : 'default_password', // Handle optional password field
@@ -163,14 +163,12 @@ async function handleRegister() {
             email: formElements['email'].value,
         };
 
-        // Convert userData object to JSON
-        const userDataJson = JSON.stringify(userData);
 
-        console.log("Submitting JSON user data:", userDataJson);
+        console.log("Submitting JSON user data:", userData);
 
         // Call the registerUser function with the JSON data
         try {
-            await registerUser(userDataJson); // Send JSON data
+            await registerUser(userData); // Send JSON data
             console.log("User registered successfully");
         } catch (error) {
             console.error("Error registering user:", error);
