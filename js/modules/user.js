@@ -26,6 +26,16 @@ export async function getAllUsers() {
     }
 }
 
+export async function registerUser(userData){
+    try {
+        const response = await apiRequest(`/members`, 'POST', userData)
+        return response
+    } catch (error) {
+        console.error('Error registering User', error);
+        return [];
+    }
+}
+
 // Function to display user role(s) on the main page
 export async function displayUserRole() {
     // const username = getCookie('username'); // Retrieve username from cookie

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Logout</title>
+        <script type="module" src="js/app.js" defer></script>
+    </head>
+    <body>
+        <img id="memberLogo" src="" alt="Member Logo" style="max-width: 100px; max-height: 100px;">
+        <br>
+
+        <!-- Form to upload new member logo -->
+        <form id="uploadLogoForm">
+            <label for="logoUpload">Upload New Logo:</label>
+            <input type="file" id="logoUpload" name="logoUpload">
+        </form>
+        <br>
+
+        <!-- Display user info in a form for editing -->
+        <form id="registerForm">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <br>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course">
+            <br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea>
+            <br>
+
+            <label for="istId">IST ID:</label>
+            <input type="text" id="istId" name="istId" disabled>
+            <br>
+
+            <label for="memberId">Member ID</label>
+            <input type="text" id="memberId" name="memberId">
+            <br>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <br>
+
+            <button type="submit">Register</button>
+        </form>
+    </body>
+</html>
+

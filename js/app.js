@@ -8,7 +8,8 @@ import {
     displayUserLogo,
     uploadUserFormData,
     populateFormWithUserData,
-    getAllUsers
+    getAllUsers,
+    registerUser
 } from "/js/modules/user.js";
 
 // Main page handler (/)
@@ -108,6 +109,77 @@ async function handleProfilePage() {
     }
 }
 
+async function handleRegister() {
+    // Get the current URL's query string
+    const queryString = window.location.search;
+
+    // Parse the query string
+    const urlParams = new URLSearchParams(queryString);
+
+    // Access individual parameters
+    const istId = urlParams.get("ist_id"); // "ist1100336"
+    const name = urlParams.get("name"); // "José Duarte Ferrão de Oliveira Lopes"
+    const email = urlParams.get("email"); // "joseduartelopes@tecnico.ulisboa.pt"
+
+    // Log parameters for debugging
+    console.log("IST ID:", istId);
+    console.log("Name:", name);
+    console.log("Email:", email);
+
+    // Get all form elements
+    const formElements = document.querySelectorAll('#registerForm input, #registerForm textarea');
+
+    // Map of form field IDs to parameter values
+    const fieldValues = {
+        name: name,
+        email: email,
+        istId: istId
+    };
+
+    // Populate form fields and disable the IST ID field
+    formElements.forEach(element => {
+        if (fieldValues[element.id] !== undefined) {
+            element.value = fieldValues[element.id]; // Set the value
+            if (element.id === "istId") {
+                element.disabled = true; // Disable the IST ID field
+            }
+        }
+    });
+
+    console.log("Form populated successfully");
+    document.getElementById('registerForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Extract values from the form
+        const formElements = event.target.elements; // Access form inputs via the event
+        const userData = {
+            ist_id: formElements['istId'].value,
+            member_number: formElements['memberId'].value, // Assuming it's the same as ist_id
+            name: formElements['name'].value,
+            username: formElements['username'].value.split(' ')[0], // First part of the name as username (example logic)
+            password: formElements['password'] ? formElements['password'].value : 'default_password', // Handle optional password field
+            join_date: formElements['joinDate'] ? formElements['joinDate'].value : new Date().toISOString().split('T')[0], // Optional join_date
+            course: formElements['course'].value,
+            email: formElements['email'].value,
+        };
+
+        // Convert userData object to JSON
+        const userDataJson = JSON.stringify(userData);
+
+        console.log("Submitting JSON user data:", userDataJson);
+
+        // Call the registerUser function with the JSON data
+        try {
+            await registerUser(userDataJson); // Send JSON data
+            console.log("User registered successfully");
+        } catch (error) {
+            console.error("Error registering user:", error);
+        }
+    });
+}
+
+
+
 // Page-specific handling
 document.addEventListener('DOMContentLoaded', () => {
     const pathname = window.location.pathname;
@@ -120,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         handleLoginPage();
     } else if (pathname === '/logout') {
         handleLogoutPage();
+    } else if (pathname === '/register') {
+        handleRegister();
     }
 });
 
