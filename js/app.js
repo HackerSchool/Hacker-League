@@ -15,7 +15,7 @@ import {
 async function handleMainPage() {
     await handleLoginRedirect();
     displayUserRole();
-    showMembers();
+    // showMembers();
 }
 
 async function showMembers() {
@@ -26,6 +26,7 @@ async function showMembers() {
     members.forEach(member => {
         members_div.innerHTML += `<p> ${member.name} </p>`;
     });
+    console.log("test");
 }
 
 // Login page handler (/login)
@@ -37,7 +38,7 @@ function handleLoginPage() {
         login(username, password);
     });
     document.getElementById('fenixOauthButton').addEventListener('click', () => {
-        window.location.href = '/api/fenix-auth'; // Redirect to the OAuth endpoint
+        window.location.href = 'http://localhost:5000/fenix-auth'; // Redirect to the OAuth endpoint
     });
 }
 

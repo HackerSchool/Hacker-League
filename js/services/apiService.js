@@ -1,5 +1,5 @@
 // /js/services/apiService.js
-const apiBaseUrl = 'http://localhost:8080/api';
+const apiBaseUrl = 'http://localhost:5000';
 
 export async function apiRequest(endpoint, method = 'GET', body = null, includeCredentials = true) {
     const options = {

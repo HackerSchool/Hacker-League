@@ -1,7 +1,7 @@
 import { apiRequest } from '/js/services/apiService.js';
 import { getFromLocalStorage, storeInLocalStorage } from "/js/modules/utils.js";
 
-const apiBaseUrl = 'http://localhost:8080/api';
+const apiBaseUrl = 'http://localhost:5000';
 
 // Function to retrieve the logged-in user's role
 export async function getUserRole(username) {
