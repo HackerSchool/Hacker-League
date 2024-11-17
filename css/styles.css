@@ -1,0 +1,252 @@
+:root {
+  /* Color variables */
+  --primary-color: #6dba83; /* Green shade for accents */
+  --secondary-color: #1B1B1B; /* Dark background color */
+  --text-color: #636363; /* Standard text color */
+  --text-color-dark: #6dba83; /* Green for highlighted text */
+  --white-color: #ffffff; /* White for contrast */
+
+  /* Font sizes */
+  --font-size-small: 0.875rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.25rem;
+  --font-size-title: 2rem;
+
+  /* Spacing */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  /* Borders */
+  --border-radius: 8px;
+  --border-width: 1px;
+}
+
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-family: 'Arial', sans-serif;
+  font-size: var(--font-size-medium);
+  line-height: 1.6;
+  margin: 0;
+  /* padding: var(--spacing-large); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: var(--font-size-title);
+  margin-bottom: var(--spacing-large);
+}
+
+form {
+  background-color: var(--secondary-color);
+  border: var(--border-width) solid var(--text-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-medium);
+  width: 90vw;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--spacing-large);
+  padding: var(--spacing-medium);
+}
+
+form label {
+  display: block;
+  margin-bottom: var(--spacing-small);
+  font-weight: bold;
+  color: var(--text-color-dark);
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-medium);
+  border: var(--border-width) solid var(--text-color);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  box-sizing: border-box; /* Optional: ensures padding and border are included in width */
+}
+
+form input:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+form button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: var(--text-color-dark);
+}
+
+form input:disabled, 
+form textarea:disabled {
+  color: #a0a0a0; /* Light grey color for disabled text */
+  background-color: #333; /* Slightly darker background to show it's disabled */
+  border-color: #666; /* Border color for disabled input */
+}
+
+
+#userRoles, #message {
+  font-size: var(--font-size-medium);
+  margin-bottom: var(--spacing-large);
+  color: var(--text-color);
+}
+
+img {
+  display: block;
+  margin: var(--spacing-large) auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin: 0 var(--spacing-small);
+}
+
+a:hover {
+  color: var(--text-color-dark);
+  text-decoration: underline;
+}
+
+button#editButton {
+  width: auto;
+  display: inline-block;
+  margin-right: var(--spacing-small);
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+img#memberLogo {
+  display: block;
+  margin: var(--spacing-large) auto;
+  max-width: 50vw; /* Maximum width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    height: 3em;
+    box-shadow: none;
+    margin: 0;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: var(--spacing-medium) var(--spacing-large);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* position: sticky; */
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    max-width: 100%;
+    box-sizing: border-box; /* Optional: ensures padding and border are included in width */
+}
+
+.navbar-brand {
+    font-size: var(--font-size-large);
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar-links {
+    display: flex;
+    gap: var(--spacing-medium);
+}
+
+.navbar-links a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: var(--font-size-medium);
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+
+/* General styling for the table container */
+#members {
+    width: 100vw;
+    max-width: 800px; /* Limit the container width */
+    overflow-x: auto; /* Add horizontal scrolling */
+    margin-top: var(--spacing-large); /* Add space above the table */
+    padding: var(--spacing-medium);
+    box-sizing: border-box; /* Optional: ensures padding and border are included in width */
+}
+
+/* General styling for the table */
+.members-table {
+    width: 100%;
+    max-width: 100%; /* Ensure the table fits the container */
+    border-collapse: collapse;
+    border: var(--border-width) solid var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/* Header styling */
+.members-table th {
+    text-align: left;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: var(--spacing-medium);
+    font-size: var(--font-size-medium);
+    text-transform: uppercase;
+}
+
+/* Row styling */
+.members-table td {
+    padding: var(--spacing-medium);
+    border-bottom: var(--border-width) solid var(--text-color);
+    font-size: var(--font-size-medium);
+}
+
+/* Alternating row colors */
+.members-table tr:nth-child(odd) {
+    background-color: rgba(109, 186, 131, 0.1);
+}
+
+/* Hover effect */
+.members-table tr:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* /* Prevent table overflow from affecting entire page */ */
+/* @media (max-width: 600px) { */
+/*     #members { */
+/*         width: 100vw; /* Ensure the container takes up full width of the viewport */ */
+/*         overflow-x: auto; /* Enable horizontal scrolling for narrow screens */ */
+/*     } */
+/**/
+/*     .members-table { */
+/*         min-width: 600px; /* Prevent shrinking too much on small screens */ */
+/*     } */
+/* } */

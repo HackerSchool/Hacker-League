@@ -2,15 +2,27 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
+        <link rel="stylesheet" href="/css/styles.css">
         <script type="module" src="js/app.js" defer></script>
     </head>
     <body>
-        <h1>Welcome to the Dashboard</h1>
-        <div id="userRoles">Loading roles...</div> <!-- Display roles here -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img class = "logo" src="/static/images/HS_NOVO.svg" alt="HS Dashboard">
+            </div>
+            <div class="navbar-links">
+                <a href="/logout">Logout</a>
+                <a href="/login">Login</a>
+            </div>
+        </nav>
+        <h1>Welcome to the HS Dashboard</h1>
+
+        <div id="userRoles">Loading roles...</div>
+
         <!-- Display the current logo -->
-        <img id="memberLogo" src="" alt="Member Logo" style="max-width: 100px; max-height: 100px;">
-        <br>
+        <img id="memberLogo" src="" alt="Member Logo">
 
         <!-- Form to upload new member logo -->
         <form id="uploadLogoForm">
@@ -19,28 +31,22 @@
             <button type="submit">Upload</button>
         </form>
 
-        <!-- Display user info in a form for editing -->
+        <!-- Form to edit user info -->
         <form id="editForm">
-
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" disabled>
-            <br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" disabled>
-            <br>
 
             <label for="course">Course:</label>
             <input type="text" id="course" name="course" disabled>
-            <br>
 
             <label for="description">Description:</label>
             <textarea id="description" name="description" disabled></textarea>
-            <br>
 
             <label for="istId">IST ID:</label>
             <input type="text" id="istId" name="istId" disabled>
-            <br>
 
             <button type="button" id="editButton">Edit</button>
             <button type="submit">Save Changes</button>
@@ -49,17 +55,12 @@
         <p id="message"></p>
 
         <div id="members">
-            
+            <!-- Member details will be displayed here -->
         </div>
 
+        <div class="links">
+            <a href="/logout">Logout</a>
+            <a href="/login">Login</a>
+        </div>
     </body>
 </html>
-
-<!-- Display member's logo -->
-
-
-<a href="/logout">Logout</a>
-<a href="/login">Login</a>
-</body>
-</html>
-

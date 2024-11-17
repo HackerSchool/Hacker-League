@@ -20,15 +20,46 @@ async function handleMainPage() {
 }
 
 async function showMembers() {
-    const members = await getAllUsers();
+    const members = await getAllUsers(); // Fetch members
     console.log(members);
-    var members_div = document.getElementById('members');
-    members_div.innerHTML += "<h2> Here's all the members brother </h2>";
+
+    // Get the members container
+    const membersDiv = document.getElementById('members');
+    console.log(membersDiv)
+    membersDiv.innerHTML = "<h2>Here's all the members, brother:</h2>";
+
+    // Create the table
+    const table = document.createElement('table');
+    table.classList.add('members-table');
+
+    // Add the table header
+    const headerRow = `
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>IST ID</th>
+            <th>Description</th>
+        </tr>`;
+    table.innerHTML = headerRow;
+
+    // Populate the table rows
     members.forEach(member => {
-        members_div.innerHTML += `<p> ${member.name} </p>`;
+        const row = `
+            <tr>
+                <td>${member.name || 'N/A'}</td>
+                <td>${member.email}</td>
+                <td>${member.course}</td>
+                <td>${member.ist_id || 'N/A'}</td>
+                <td>${member.description || 'No description available'}</td>
+            </tr>`;
+        table.innerHTML += row;
     });
-    console.log("test");
+
+    // Append the table to the container
+    membersDiv.appendChild(table);
 }
+
 
 // Login page handler (/login)
 function handleLoginPage() {
