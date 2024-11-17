@@ -192,8 +192,8 @@ img#memberLogo {
 
 /* General styling for the table container */
 #members {
-    width: 100vw;
-    /* max-width: ; /* Limit the container width */ */
+    width: 100%;
+    max-width: 1200px; /* Limit the container width */
     overflow-x: auto; /* Add horizontal scrolling */
     margin-top: var(--spacing-large); /* Add space above the table */
     padding: var(--spacing-medium);
