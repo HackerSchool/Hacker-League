@@ -5,6 +5,14 @@ Welcome to **User Management Web Application** – a simple and scalable solutio
 ---
 
 ## ✅ **Current Features**
+
+
+
+
+https://github.com/user-attachments/assets/9fcf0f8c-b758-456f-86a7-6d6ac5fe8e9b
+
+
+
 | Feature            | Description                                                                      |
 |--------------------|----------------------------------------------------------------------------------|
 | **Login/Logout**   | Secure authentication flow with cookies and local storage support.              |
@@ -32,36 +40,16 @@ Welcome to **User Management Web Application** – a simple and scalable solutio
 2. **Start the Backend**:  
    Make sure your backend server is running at `http://localhost:5000`.  
 
-3. **Serve via Your Favorite Server**:  
-   Below is an example Nginx configuration to serve the app and proxy API requests to the backend:  
-
-   ```nginx
-   server {
-       listen       8080;
-       server_name  localhost;
-
-       location / {
-           root   /home/user/path-to-repo;
-           index  index.html index.htm;
-           try_files $uri $uri/ /html/$uri.html =404;
-       }
-
-       location /api/ {
-           proxy_pass http://127.0.0.1:5000/;
-           proxy_set_header Host $host;
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-           proxy_set_header X-Forwarded-Proto $scheme;
-       }
-
-       error_page   500 502 503 504  /50x.html;
-       location = /50x.html {
-           root   /usr/share/nginx/html;
-       }
-   }
+3. **Serve via The Included Go Server**:  
+   ```bash
+   go run server.go
+   ```
+   To get live reloading, install [air](https://github.com/air-verse/air), then run
+   ```bash
+   air
    ```
 
-4. Open `http://localhost:8080` in your browser, and you're good to go! 🎉
+5. Open `http://localhost:8080` in your browser, and you're good to go! 🎉
 
 ---
 
