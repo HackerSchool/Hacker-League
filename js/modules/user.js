@@ -135,7 +135,6 @@ export async function uploadUserFormData(event) {
         email: document.getElementById('email').value,
         course: document.getElementById('course').value,
         description: document.getElementById('description').value,
-        ist_id: document.getElementById('istId').value
     };
 
     try {
@@ -156,13 +155,5 @@ export function populateFormWithUserData(memberData) {
     document.getElementById('email').value = memberData.email || '';
     document.getElementById('course').value = memberData.course || '';
     document.getElementById('description').value = memberData.description || '';
-    document.getElementById('istId').value = memberData.ist_id || '';
 }
 
-export function populateAdminFormWithUserData(memberData) {
-    document.getElementById('admin-name').value = memberData.name || '';
-    document.getElementById('admin-email').value = memberData.email || '';
-    document.getElementById('admin-course').value = memberData.course || '';
-    document.getElementById('admin-description').value = memberData.description || '';
-    document.getElementById('admin-istId').value = memberData.ist_id || '';
-}

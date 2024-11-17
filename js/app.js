@@ -8,10 +8,13 @@ import {
     displayUserLogo,
     uploadUserFormData,
     populateFormWithUserData,
-    populateAdminFormWithUserData,
     getAllUsers,
     registerUser
 } from "/js/modules/user.js";
+
+import { populateAdminFormWithUserData } from "/js/modules/admin.js";
+
+
 
 // Main page handler (/)
 async function handleMainPage() {
@@ -188,11 +191,9 @@ async function handleRegister() {
         const formElements = event.target.elements; // Access form inputs via the event
         const userData = {
             ist_id: formElements['istId'].value,
-            member_number: Number(formElements['memberId'].value), // Assuming it's the same as ist_id
             name: formElements['name'].value,
             username: formElements['username'].value.split(' ')[0], // First part of the name as username (example logic)
             password: formElements['password'] ? formElements['password'].value : 'default_password', // Handle optional password field
-            join_date: formElements['joinDate'] ? formElements['joinDate'].value : new Date().toISOString().split('T')[0], // Optional join_date
             course: formElements['course'].value,
             email: formElements['email'].value,
         };
@@ -276,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleMainPage();
         handleProfilePage();
         handleUserProfile();
-        handleAdminPanel(); 
+        handleAdminPanel();
     } else if (pathname === '/login') {
         handleLoginPage();
     } else if (pathname === '/logout') {
