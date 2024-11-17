@@ -8,6 +8,7 @@ import {
     displayUserLogo,
     uploadUserFormData,
     populateFormWithUserData,
+    populateAdminFormWithUserData,
     getAllUsers,
     registerUser
 } from "/js/modules/user.js";
@@ -36,6 +37,7 @@ async function showMembers() {
     const headerRow = `
         <tr>
             <th>Name</th>
+            <th>Username</th>
             <th>Email</th>
             <th>Course</th>
             <th>IST ID</th>
@@ -48,6 +50,7 @@ async function showMembers() {
         const row = `
             <tr>
                 <td>${member.name || 'N/A'}</td>
+                <td>${member.username || 'N/A'}</td>
                 <td>${member.email}</td>
                 <td>${member.course}</td>
                 <td>${member.ist_id || 'N/A'}</td>
@@ -209,6 +212,62 @@ async function handleRegister() {
 
 
 
+async function handleAdminPanel() {
+    // Search for a user when the "Search" button is clicked
+    document.getElementById('searchButton').addEventListener('click', async () => {
+        const username = document.getElementById('searchUsername').value;
+        if (username) {
+            try {
+                // Fetch the user data using your apiRequest helper
+                const userData = await fetchUserData(username);
+                if (userData) {
+                    // Populate the admin form with the user data (using userForm)
+                    populateAdminFormWithUserData(userData);
+                    document.getElementById('submitButton').innerText = 'Update User'; // Change submit button text
+                    document.getElementById('userForm').style.display = 'block'; // Show form
+                } else {
+                    // If user doesn't exist, show empty form to create a new user
+                    // clearForm('userForm');
+                    document.getElementById('submitButton').innerText = 'Create User'; // Change submit button text
+                    document.getElementById('userForm').style.display = 'block'; // Show form
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                alert('User not found or error fetching data.');
+            }
+        }
+    });
+
+    // Handle form submission (for creating or updating the user)
+    document.getElementById('userForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Gather form data
+        const formElements = event.target.elements;
+        const userData = {
+            ist_id: formElements['istId'].value,
+            name: formElements['name'].value,
+            email: formElements['email'].value,
+            course: formElements['course'].value,
+            description: formElements['description'].value,
+        };
+
+        try {
+            if (userData.ist_id) {
+                // Update existing user
+                await apiRequest(`/api/user/${userData.ist_id}`, 'PUT', userData);
+                alert('User updated successfully!');
+            } else {
+                // Create new user (IST ID is empty in this case)
+                await apiRequest(`/api/user`, 'POST', userData);
+                alert('New user created successfully!');
+            }
+        } catch (error) {
+            console.error('Error handling user data:', error);
+            alert('There was an error processing the request.');
+        }
+    });
+}
 // Page-specific handling
 document.addEventListener('DOMContentLoaded', () => {
     const pathname = window.location.pathname;
@@ -217,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleMainPage();
         handleProfilePage();
         handleUserProfile();
+        handleAdminPanel(); 
     } else if (pathname === '/login') {
         handleLoginPage();
     } else if (pathname === '/logout') {

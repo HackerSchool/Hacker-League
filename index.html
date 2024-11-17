@@ -62,5 +62,33 @@
             <a href="/logout">Logout</a>
             <a href="/login">Login</a>
         </div>
+        <!-- Admin panel: User search and edit/create form -->
+        <div id="adminPanel">
+            <h2>Admin Panel</h2>
+
+            <!-- Search input -->
+            <input type="text" id="searchUsername" placeholder="Enter username to search" />
+            <button id="searchButton">Search</button>
+
+            <!-- User form (to display or create user data) -->
+            <form id="userForm" style="display: none;">
+                <label for="name">Name:</label>
+                <input type="text" id="admin-name" />
+
+                <label for="email">Email:</label>
+                <input type="email" id="admin-email" />
+
+                <label for="course">Course:</label>
+                <input type="text" id="admin-course" />
+
+                <label for="istId">IST ID:</label>
+                <input type="text" id="admin-istId" disabled />
+
+                <label for="description">Description:</label>
+                <textarea id="admin-description"></textarea>
+
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+        </div>
     </body>
 </html>
