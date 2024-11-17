@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/9fcf0f8c-b758-456f-86a7-6d6ac5fe8e9b
    air
    ```
 
-5. Open `http://localhost:8080` in your browser, and you're good to go! 🎉
+5. Open `http://localhost:3000` in your browser, and you're good to go! 🎉
 
 ---
 
