@@ -59,33 +59,53 @@
             <a href="/logout">Logout</a>
             <a href="/login">Login</a>
         </div>
-        <!-- Admin panel: User search and edit/create form -->
         <div id="adminPanel">
             <h2>Admin Panel</h2>
 
-            <!-- Search input -->
+            <!-- Admin panel: User search and edit/create form -->
+            <!-- Action Buttons -->
+            <button id="createUserButton">Create New User</button>
+            <button id="updateUserButton">Update Existing User</button>
             <input type="text" id="searchUsername" placeholder="Enter username to search" />
             <button id="searchButton">Search</button>
-
-            <!-- User form (to display or create user data) -->
+            <!-- User form -->
             <form id="userForm" style="display: none;">
                 <label for="name">Name:</label>
-                <input type="text" id="admin-name" />
+                <input type="text" id="admin-name" name="name" />
 
                 <label for="email">Email:</label>
-                <input type="email" id="admin-email" />
+                <input type="email" id="admin-email" name="email" />
 
                 <label for="course">Course:</label>
-                <input type="text" id="admin-course" />
+                <input type="text" id="admin-course" name="course" />
 
                 <label for="istId">IST ID:</label>
-                <input type="text" id="admin-istId" disabled />
+                <input type="text" id="admin-istId" name="ist_id" />
 
                 <label for="description">Description:</label>
-                <textarea id="admin-description"></textarea>
+                <textarea id="admin-description" name="description"></textarea>
+
+                <label for="exitDate">Exit Date:</label>
+                <input type="date" id="admin-exitDate" name="exit_date" />
+
+                <label for="extra">Extra:</label>
+                <input type="text" id="admin-extra" name="extra" />
+
+                <label for="joinDate">Join Date:</label>
+                <input type="date" id="admin-joinDate" name="join_date" />
+
+                <label for="memberNumber">Member Number:</label>
+                <input type="number" id="admin-memberNumber" name="member_number" />
+
+                <label for="roles">Roles:</label>
+                <input type="text" id="admin-roles" name="roles" />
+
+                <label for="username">Username:</label>
+                <input type="text" id="admin-username" name="username" />
 
                 <button type="submit" id="submitButton">Submit</button>
             </form>
         </div>
+
     </body>
 </html>
