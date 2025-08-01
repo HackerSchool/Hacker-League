@@ -14,13 +14,12 @@ import {
 
 import { populateAdminFormWithUserData } from "/js/modules/admin.js";
 
-
-
 // Main page handler (/)
 async function handleMainPage() {
     await handleLoginRedirect();
     displayUserRole();
     showMembers();
+    setupHamburgerMenu();
 }
 
 async function showMembers() {
@@ -65,7 +64,6 @@ async function showMembers() {
     // Append the table to the container
     membersDiv.appendChild(table);
 }
-
 
 // Login page handler (/login)
 function handleLoginPage() {
@@ -211,8 +209,6 @@ async function handleRegister() {
     });
 }
 
-
-
 async function handleAdminPanel() {
     // Search for a user when the "Search" button is clicked
     document.getElementById('searchButton').addEventListener('click', async () => {
@@ -269,6 +265,24 @@ async function handleAdminPanel() {
         }
     });
 }
+
+// Hamburger menu functionality
+function setupHamburgerMenu() {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburgerMenu.contains(event.target)) {
+                hamburgerMenu.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Page-specific handling
 document.addEventListener('DOMContentLoaded', () => {
     const pathname = window.location.pathname;
@@ -284,6 +298,9 @@ document.addEventListener('DOMContentLoaded', () => {
         handleLogoutPage();
     } else if (pathname === '/register') {
         handleRegister();
+    } else if (pathname === '/leaderboard') {
+        // Leaderboard page is handled by its own script
+        setupHamburgerMenu();
     }
 });
 

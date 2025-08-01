@@ -1,0 +1,647 @@
+Hacker League /
+
+Day 1
+
+Day 1
+By Armando Gonçalves
+
+📌 TL;DR
+O presente relatório documenta o primeiro dia do sprint de desenvolvimento do
+jogo “Hacker League”. O jogo surge como resposta ao tema proposto “The Game
+After the Game”, explorando a transformação de uma atividade já existente e social
+numa experiência de jogo formal.
+
+Índice
+
+1. Introdução . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.1. A HackerSchool . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2. HackNights . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.3. “The Game After the Game” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.3.1. Primeira camada/O “jogo” existente . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.3.2. Segunda camada/O “jogo após o jogo” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2. Conceito Inicial . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.1. HackerPitch - Fase 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2. HackerChallenge - Fase 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.3. HackerMaster . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.3.1. Administração e Logística do Jogo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.3.2. Arbitragem Imparcial . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.3.3. Atribuição e Validação de Pontos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.4. xad0w.b1ts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.5. Classificações . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.1. HackerPitch - Fase 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.2. HackerChallenge - Fase 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.2.1. Desafios “Objetivos” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.2.2. Desafios “Subjetivos” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.6. Enquadramento teórico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3. O Sprint . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.1. A Equipa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.2. Understand I . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2.1. “Cover Story” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2.2. Experience Goals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3.2.3. “Pré-Mortem” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.2.4. Sprint Questions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.2.5. Mapa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.3. Understand II . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.3.1. “How Might We (HMW)” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.4. Sprint Target . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+
+1
+
+Hacker League /
+
+Day 1
+
+1. Introdução
+1.1. A HackerSchool
+A HackerSchool é uma associação académica do Instituto Superior Técnico que
+promove um ambiente de aprendizagem prática e colaborativa. Inspirada na cultura
+hacker, a associação foca-se no “Learn-by-doing” e na partilha de conhecimento nas
+novas tecnologias entre pares, independentemente do curso de formação. Ao longo
+dos seus 12 anos de existência já foram desenvolvidos mais de 40 projetos em áreas
+que vão desde a eletrónica, software, webdev, inteligência artificial até à modulação 3D
+e mesmo desenvovimento de jogos.
+
+1.2. HackNights
+As HackNights são encontros mensais da HackerSchool que acontecem na terceira
+quinta-feira de cada mês. Estes eventos são uma oportunidade para:
+• Convivência e Jantar, ao reunir os membros da HackerSchool num ambiente
+descontraído, com espaço para jogos, Teambuildings e pizzas à mistura.
+• Discussão de Projetos e Atividades; são um fórum para discutir os projetos em
+andamento e as atividades que têm sido desenvolvidas pela associação, bem como
+para planear iniciativas futuras.
+• Conceção de Projetos Temáticos, havendo sempre um espaço dedicado à criação de
+projetos temáticos de curta duração.
+Embora sejam um momento de convívio para os membros, as HackNights são abertas
+ao público, permitindo que qualquer pessoa interessada se junte e participe.
+
+1.3. “The Game After the Game”
+O mote proposto “The Game After the Game” pode ser interpretado de múltiplas
+formas; no contexto deste projeto, interpretamos este conceito através de duas
+perspetivas complementares, representando a ideia de que experiências lúdicas podem
+emergir ou ser construídas a partir de outras atividades.
+1.3.1. Primeira camada/O “jogo” existente
+As HackNights constituem efetivamente o “jogo” principal da HackerSchool,
+representando a sua maior atração e elemento distintivo. Esta conceptualização pode
+ser entendida tanto literal quanto metaforicamente.
+Analisando à luz da definição de Salen e Zimmerman (see [1]), as HackNights já
+incorporam características fundamentais de um jogo:
+• Sistema: Estrutura recorrente mensal com formato estabelecido e expectativas
+definidas
+• Jogadores: Membros da HackerSchool que participam ativamente nas dinâmicas
+• Conflito artificial: Desafio da limitação temporal inerente a cada sessão, no
+desenvolvimento dos projetos
+• Regras: Embora informais, existem normas a seguir relativamente a apresentações,
+partilha de conhecimento e comportamento colaborativo
+• Resultado quantificável: Reconhecimento social, feedback dos pares
+
+2
+
+Hacker League /
+
+Day 1
+
+Numa interpretação mais ampla, as HackNights funcionam como o “grande jogo” da
+HackerSchool onde cada membro joga o papel de “hacker”, explorando várias
+identidades tecnológicas, testando os seus limites técnicos e criativos. Constituem o
+momento de maior energia e envolvimento da comunidade, o evento principal em
+torno do qual orbita toda a atividade da organização.
+1.3.2. Segunda camada/O “jogo após o jogo”
+O Hacker League representa literalmente um jogo formal construído sobre esta
+atividade pré-existente. Não substitui as HackNights, mas adiciona uma camada
+gamificada que transforma a experiência existente numa competição estruturada com
+regras explícitas, métricas quantificáveis e recompensas tangíveis.
+Após esta breve contextualização do problema, interessa agora perceber em mais
+detalhe a ideia de jogo inicialmente proposta pelo autor que serviu de ponto de partida
+para este sprint.
+
+2. Conceito Inicial
+
+O Hacker League propõe-se a formalizar e potencializar estas dinâmicas existentes nas
+HackNights através da criação de um sistema de jogo estruturado. A ideia central
+consiste em transformar cada HackNight numa “jornada” competitiva, onde equipas de
+3 elementos formadas a partir dos projetos desenvolvidos na HackerSchool competem
+por pontos ao longo do tempo. A motivação original para gamificar as HackNights era
+aumentar a participação dos membros neste evento mensal de grande importância
+para o núcleo. No entanto, ao longo já do primeiro dia do sprint, outros objetivos
+ganharam destaque.
+O sistema de pontuação culmina na atribuição de prémios, incluindo:
+• Prémio de “Projeto do Ano” (já existente)
+• Prémio de “Hacker do Ano” (já existente)
+• Novos prémios como “Estagiário do Ano” e “Hackers All-Star”
+Cada jornada passa por 2 fases, contribuindo cada uma delas para a classificação final
+da jornada.
+
+2.1. HackerPitch - Fase 1
+Na primeira fase, as equipas têm 1 minuto e 30 segundos para apresentar o progresso
+mensal do seu projeto. É a oportunidade de partilhar os avanços alcançados, os
+desafios superados e as aprendizagens adquiridas ao longo do mês.
+Paralelamente, o HackerMaster (see Section 2.3) define um tópico surpresa à partida,
+com antecedência. Todas as equipas devem incorporar este tópico na sua apresentação
+de 1 minuto e 30 segundos, criando uma ligação inesperada com o seu projeto.
+A classificação desta fase é dada pela votação de todos os participantes (see Section 2.5)
+e tem em conta vários aspetos:
+• a qualidade visual do slideshow (se é engraçado e apelativo),
+• a criatividade na integração do tópico surpresa (como conseguem ligar algo
+aparentemente sem relação ao projeto principal),
+• o respeito rigoroso pelo limite de tempo.
+
+3
+
+Hacker League /
+
+Day 1
+
+2.2. HackerChallenge - Fase 2
+Na segunda e decisiva fase, as equipas enfrentam-se em desafios práticos, com
+duração máxima de uma hora. Aqui, a classificação será determinada pelo tempo de
+execução ou pela prestação global na prova. No entanto, quando a natureza do desafio
+envolver subjetividade (como na “Pior UI”), a avaliação passará pela votação de todos os
+restantes participantes ((see Section 2.5)).
+De seguida a tabela que resume os 8 desafios propostos.
+Jornada
+
+Desafio
+
+Descrição
+
+Com
+Votação
+
+1ª
+Jornada
+
+HackerScript
+
+Criar uma linguagem de programação do
+zero, com comandos personalizados
+relacionados ao projeto de cada equipa.
+
+Sim
+
+2ª
+Jornada
+
+Pior UI
+
+Criar intencionalmente a interface de
+utilizador mais frustrante, confusa e
+ineficaz possível.
+
+Sim
+
+3ª
+Jornada
+
+Humano ou AI?
+
+Através de perguntas e respostas,
+equipas têm de detetar se estão perante
+humanos ou AI.
+
+Não
+
+4ª
+Jornada
+
+HackerAoC
+
+Resolução de problemas de programação
+em linguagens obscuras inspirados no
+“Advent of Code”, sem ajuda de LLMs.
+
+Sim
+
+5ª
+Jornada
+
+HackerCTF
+
+Cada equipa deve esconder uma “Flag”
+no seu projeto e, em simultâneo,
+procurar e “capturar” as escondidas nos
+projetos das outras equipas.
+
+Não
+
+6ª
+Jornada
+
+OSINT
+
+Open Source Intelligence para recolher e
+analisar informações disponíveis
+publicamente (descobrir “rastos digitais”).
+
+Sim
+
+7ª
+Jornada
+
+Wiki Race
+
+Corrida para navegar entre dois artigos
+aleatórios da Wikipédia, usando apenas
+os links internos.
+
+Não
+
+8ª
+Jornada
+
+HackerOlympics
+
+Uma série de desafios técnicos rápidos e
+diversos que testam um leque alargado
+de habilidades.
+
+Não
+
+2.3. HackerMaster
+O HackerMaster é uma figura central na dinâmica da Hacker League, assumindo um
+papel comparável ao de um “Game Master” num jogo de DnD. Esta função é crucial
+para a gestão logística de toda a liga.
+As principais responsabilidades do HackerMaster são:
+2.3.1. Administração e Logística do Jogo
+É o administrador principal da Hacker League, gerindo todos os aspetos logísticos e
+operacionais para garantir o bom funcionamento das jornadas.
+4
+
+Hacker League /
+
+Day 1
+
+2.3.2. Arbitragem Imparcial
+Atua como árbitro nas diversas competições, assegurando o cumprimento das regras.
+A imparcialidade é fundamental, e a direção da HackerSchool tem autoridade para
+propor a substituição do HackerMaster caso considere que as obrigações não estão a
+ser cumpridas de forma justa.
+2.3.3. Atribuição e Validação de Pontos
+Em provas baseadas em tempo ou precisão (como nos “HackerOlympics”), o
+HackerMaster é responsável por inserir os dados e classificar as equipas com base nos
+resultados objetivos. Mesmo em desafios avaliados por votação das equipas (see
+Section 2.5) (como no “Pior UI”), o HackerMaster é quem regista e valida os resultados
+finais.
+Para além disso, tem ainda o dever de aprovar a conclusão de projetos e a validação de
+pontos por atividades não contempladas neste protótipo inicial.
+A função do HackerMaster é coordenada e supervisionada pela direção da
+HackerSchool, garantindo alinhamento com os objetivos da associação.
+
+2.4. xad0w.b1ts
+
+📜 Lore
+Na sombra da HackerSchool e da própria Hacker League, opera uma ameaça
+silenciosa: os xad0w.b1ts. Esta ramificação tecnológica, criada pela enigmática IST
+(Irmandade Secreta do Técnico), tem como missão sabotar qualquer iniciativa que
+ameace o controlo invisível da Irmandade. Embora a HackerSchool tenha resistido
+aos seus ataques no passado, os xad0w.b1ts persistem, tentando enfraquecer a
+nossa comunidade a todo o custo.
+Na Hacker League, a ameaça dos xad0w.b1ts torna-se real. Em cada jornada, uma
+equipa é secretamente selecionada para atuar como a equipa x-biter, com missões
+adicionais de sabotagem. Cada missão x-biter bem-sucedida concede pontos à equipa
+infiltrada, aumentando a sua vantagem oculta.
+No final de cada jornada, as equipas enfrentam um dilema crucial: devem votar em
+quem suspeitam ser a equipa x-biter.
+Se acertarem na equipa x-biter: Todas as equipas que votaram corretamente
+recebem pontos bónus, e a equipa x-biter perde uma quantidade significativa de
+pontos, revelando a sua identidade. Na jornada seguinte, uma nova equipa aleatória
+será escolhida para assumir o manto dos xad0w.b1ts.
+Se errarem a votação: Todas as equipas que votaram perdem pontos; a equipa x-biter
+também “perde” pontos publicamente (para manter o disfarce), mas um contador
+secreto regista os pontos extra que serão adicionados ao seu total no final da liga. A
+equipa x-biter mantém-se infiltrada.
+Abstenção de Voto: As equipas têm a opção de não votar. Neste caso, ninguém perde
+pontos, mas os xad0w.b1ts continuam a acumular pontos extra secretamente.
+
+5
+
+Hacker League /
+
+Day 1
+
+2.5. Classificações
+O sistema de classificações da Hacker League é determinado pela soma dos pontos
+obtidos na Fase 1 e na Fase 2. Esta pontuação combinada reflete o desempenho
+global da equipa, tanto na apresentação do seu progresso quanto na superação dos
+desafios técnicos ou criativos do mês.
+2.5.1. HackerPitch - Fase 1
+Nesta fase, a avaliação do progresso mensal dos projetos e da integração do tópico
+surpresa baseia-se na votação dos membros. Todos os participantes votam, ordenando
+as equipas da sua preferência (da que mais gostaram para a que menos gostaram).
+Os votos são recolhidos e agregados, resultando numa lista ordenada de equipas. Os
+pontos são atribuídos de forma decrescente, da equipa com a maior votação à equipa
+com a menor.
+2.5.2. HackerChallenge - Fase 2
+A pontuação nesta fase depende da natureza do desafio da jornada.
+2.5.2.1. Desafios “Objetivos”
+Um desafio objetivo é aquele onde o resultado pode ser medido e quantificado de
+forma inequívoca, sem a necessidade de interpretação ou opinião. A performance é
+avaliada por métricas claras e universais, como tempo, precisão, número de itens
+corretos, ou recursos utilizados. A classificação é baseada puramente nos dados,
+garantindo que o HackerMaster possa determinar o vencedor de forma imparcial e
+matematicamente comprovada.
+Exemplos: Wiki Race (tempo), HackerOlympics (tempo, precisão em testes específicos).
+Para estes desafios, a classificação é inteiramente gerida pelo HackerMaster, que insere
+os resultados com base nas métricas referidas anteriormente.
+2.5.2.2. Desafios “Subjetivos”
+Um desafio subjetivo envolve critérios de avaliação que dependem de perceção,
+criatividade, estética ou impacto. Embora possa haver diretrizes e objetivos técnicos, a
+qualidade final do trabalho é avaliada pela opinião humana e pela interpretação de
+fatores menos tangíveis.
+Exemplos: HackerScript (inovação e criatividade na linguagem), Pior UI (quão “pior” e
+engraçada a UI é)
+Critérios de Avaliação propostos:
+1. Originalidade e Criatividade: Grau de inovação/pensamento “outof-the-box”.
+2. Implementação Técnica/Coerência: Qualidade da execução dentro
+das regras do desafio.
+3. Impacto/Diversão: Quão envolvente, útil ou divertida foi a solução
+apresentada.
+4. Respeito pelo Tema (se aplicável): Fidelidade à proposta do desafio
+ou ao tópico do mês.
+6
+
+Hacker League /
+
+Day 1
+
+Para estes desafios cada participante ordena os projetos ou equipas de acordo com a
+sua preferência ou perceção de melhor prestação.
+
+2.6. Enquadramento teórico
+Este conceito alinha-se com a definição de jogo proposta por Salen e Zimmerman (see
+[1]), agora de uma forma óbvia e clara, que caracteriza um jogo como “um sistema no
+qual jogadores se envolvem num conflito artificial, definido por regras, que resulta num
+resultado quantificável”. O Hacker League enquadra-se nesta definição ao:
+• Estabelecer um sistema estruturado de competição
+• Envolver jogadores ativos (membros da Hacker School)
+• Criar um conflito artificial através da competição entre equipas
+• Definir regras claras de participação e pontuação
+• Produzir resultados quantificáveis através do sistema de pontos e prémios
+Apesar da ideia inicial se apresentar já bastante sólida e aparentemente próxima de um
+produto final, esta encontra-se ainda longe da maturidade necessária. Uma análise
+mais cuidadosa revela lacunas fundamentais no conceito: o sistema de pontuação
+permanece completamente indefinido. Questões essenciais como a mecânica de
+atribuição de pontos, os valores específicos por fase, e os métodos de progressão não
+foram sequer abordados.
+Foi precisamente neste contexto, e com o objetivo de desenvolver um jogo que não
+apenas satisfaça as necessidades e preferências dos membros da HackerSchool, mas
+que também se revele genuinamente cativante e estruturalmente sólido, que se
+justificou a realização do presente sprint. A metodologia sprint permite uma
+abordagem sistemática e colaborativa para identificar, definir e resolver estas questões
+fundamentais de design, assegurando que o resultado final constitua um jogo coeso e
+envolvente.
+
+3. O Sprint
+3.1. A Equipa
+Para iniciar o sprint, foi formada uma equipa multidisciplinar inspirada pelas ideias de
+Knapp (see [2]), composta pelos seguintes elementos:
+• Armando Gonçalves (AG): Ex-Presidente da HackerSchool e Co-Desenvolvedor do
+jogo. “Facilitator”
+• Gonçalo Fecha (GF): Presidente atual da HackerSchool. “Decider”
+• Gonçalo Azevedo (GA): Co-Desenvolvedor da API do núcleo.
+• André Caseiro (AC): Co-Desenvolvedor do jogo.
+• André Santos (AS): Coordenador de Recursos Humanos da HackerSchool e CoDesenvolvedor do jogo.
+Esta composição assegura a representação de um vasto leque de perspetivas essenciais
+para o projeto. O Gonçalo Fecha traz a visão do poder executivo e a capacidade de
+decisão (escolha natural para Decider). O Gonçalo Azevedo contribui com o
+7
+
+Hacker League /
+
+Day 1
+
+conhecimento técnico aprofundado e a garantia de futuras integrações com a
+infraestrutura existente da HackerSchool. O André Santos oferece o ponto de vista da
+pessoa responsável pela gestão dos recursos humanos dentro do núcleo. Por fim, a
+experiência dos desenvolvedores do jogo — André Santos, André Caseiro e o autor —
+juntamente com o conhecimento holístico da HackerSchool por parte do autor, garante
+uma abordagem completa e informada.
+Depois de uma breve explicação sobre os traços gerais do protótipo à equipa, foi
+iniciado então o sprint. O primeiro dia do sprint foi dividido em duas fases principais:
+“Understand I” e “Understand II”.
+
+3.2. Understand I
+3.2.1. “Cover Story”
+Nesta fase inicial do sprint, a equipa foi desafiada a visualizar o maior impacto positivo
+do Hacker League, projetando um cenário de sucesso tão notório que mereceria
+destaque em capas de revista, um ano após a sua implementação. Desta discussão
+emergiram quatro ideias para capas de revista:
+1. Núcleo com Forma Inovadora de Motivar Membros (Gonçalo Fecha)
+
+Com um jogo criado de raiz, núcleo da UL premeia os membros mais assíduos e
+trabalhadores. “Queremos amplificar o empenho dos membros que constroem o futuro
+do núcleo.”
+2. Núcleo de Engenharia Promove Socialização dos Seus Membros (André Santos e
+André Caseiro)
+
+8
+
+Hacker League /
+
+Day 1
+
+Com a implementação de um novo sistema, o objetivo da HackerSchool é claro:
+incentivar a interação entre todos os membros e combater o isolamento. “Agora em vez
+de passar as HackNights só no cantinho a falar com o Miguel, o Hacker League
+incentivou-nos a falar uns com os outros e discutir coisas”
+3. HackerSchool Lança Jogo Inovador (Armando Gonçalves)
+
+Núcleo de estudantes lança jogo que pode muito bem redefinir como as entidades
+estudantis encaram as suas dinâmicas internas. “A HackerSchool não só otimiza o seu
+próprio funcionamento, mas também estabelece um novo padrão para como outras
+associações académicas podem motivar e envolver os seus membros de forma
+sustentável e impactante.”
+4. HackerSchool premeia mérito de forma inovadora (Gonçalo Azevedo)
+
+Núcleo cria conceito de premiar a participação e o esforço através de um jogo.
+“Sabíamos da importância deste projeto desde o início, como algo que a HackerSchool
+não deveria abandonar mesmo que a implementação não fosse perfeita”
+3.2.2. Experience Goals
+A partir de cada “Cover Story” tornou-se mais fácil convergir para aquilo que cada um
+considerava como os experience goals, isto é, os benefícios e as experiências positivas
+que se espera que os membros da HackerSchool obtenham através do jogo.
+Gonçalo Fecha
+i) o membro sentir-se reconhecido pelo seu trabalho e dedicação ii) ser motivante o
+suficiente para não deixar de participar ao fim de algum tempo.
+
+9
+
+Hacker League /
+
+Day 1
+
+André Santos
+i) permite socializar mais com as pessoas na HackNight ii) ser motivante o suficiente
+para longo prazo
+André Caseiro
+i) tornar o trabalho com a equipa do projeto a desenvolver mais leve, de alguma forma
+ii) fazer sentir o membro mais ligado ao resto das pessoas na HackNight
+Gonçalo Azevedo
+i) saber quando estamos num período mais “ghost” e menos ativo ii) a plataforma que
+eventualmente se faça seja bonita e fácil de usar
+Armando Gonçalves
+i) sentir que a pontuação atribuida foi justa ii) ser engaging ao ponto de mais pessoas
+de fora virem jogar
+No final, os experience goals mais importantes foram considerados a experiência de
+ser engaging para longo prazo, a experiência de ser obrigado a interagir uns com
+os outros, a experiência de sentir que os resultados e pontuações são justas e a
+experiência de sentir o tempo investido recompensado.
+3.2.3. “Pré-Mortem”
+Todas as experiências positivas recolhidas foram combustível para esta próxima fase,
+onde pelo contrário a equipa se debruçou naquilo que pode correr mal.
+Para o Gonçalo Fecha, a única coisa que pode ditar o insucesso deste jogo é a fraca
+adesão e a perca do momento à medida que se desenrolam as jornadas. O Gonçalo
+Azevedo discorda, argumentando que é normal que as pessoas vão aderindo mais ou
+menos, conforme a época de exames e a sua vida pessoal; em todo o caso o jogo
+“continua sempre” e é sempre possível recuperar pontos na jornada mais à frente. Para
+o GA, o que eventualmente pode correr mal é o produto ser bastante limitado
+tecnicamente, mas mesmo nesse cenário, ele acha que o jogo é bastante flexível para
+poder ser adaptado. O André Santos por sua vez concorda com o GF e partilha o seu
+receio da fraca adesão. O André Caseiro levantou o bom ponto do jogo colocar
+demasiado peso no espírito competitivo dos membros; AC teme que jogo não tenha
+argumentos suficientes para pessoas que não se identificam com este tipo de perfil
+competitivo. Para o autor a questão da justiça na atribuição de pontos continua a ser a
+mais relevante, especialmente numa altura onde a equipa começa a sugerir incluir mais
+ações fora das HackNights passíveis de ser pontuadas, para incentivar o empenho na
+HackerSchool (exemplos: Ida ao lab = x pontos; ajudar um colega de outro projeto = y
+pontos; trabalho de marketing, como colocar um post nas redes sociais = z pontos, …).
+A discussão conduz inevitavelmente às “Sprint Questions”.
+3.2.4. Sprint Questions
+Tal como sugerido por Knapp (see [2]), a equipa traduz os seus receios para perguntas:
+Gonçalo Fecha
+1. Conseguimos criar um jogo que recompense os membros mais empenhados da
+HackerSchool?
+2. Conseguimos manter os membros engaged no jogo ao longo do ano?
+Gonçalo Azevedo
+10
+
+Hacker League /
+
+Day 1
+
+1. Conseguimos ultrapassar os obstáculos técnicos de desenvolvimento deste jogo?
+2. Conseguimos criar um jogo onde faltar a uma jornada não seja muito penalizador?
+André Santos
+1. Conseguimos fazer com que haja uma adesão significativa ao jogo por parte da
+comunidade?
+2. Conseguimos criar um jogo que aumente as situações de socialização atuais durante
+as HackNights?
+André Caseiro
+1. Conseguimos motivar pessoas com pouco ou nenhum espírito competitivo a
+participar no jogo?
+2. Conseguimos manter as pessoas interessadas no jogo durante o ano todo?
+Armando Gonçalves
+1. Conseguimos criar um sistema de atribuição de pontos que seja justo e que englobe
+situações fora das HackNights?
+2. Conseguimos criar um jogo que gere boa aderência pelos membros da
+HackerSchool?
+São votadas nas 3 Sprint Questions mais importantes:
+• Conseguimos criar um jogo que recompense os membros mais empenhados da
+HackerSchool?
+• Conseguimos manter as pessoas interessadas no jogo durante o ano todo?
+• Conseguimos criar um sistema de atribuição de pontos que seja justo e que
+englobe situações fora das HackNights?
+3.2.5. Mapa
+Após algumas iterações, o mapa é definido, com as principais interações
+representadas.
+
+3.3. Understand II
+3.3.1. “How Might We (HMW)”
+Esta fase do Sprint começou por tentar responder às Sprint Questions levantadas
+anteriormente. A discussão puxou alguns HMW, organizados de seguida em categorias:
+(Justiça e Transparência do Sistema)
+• Como podemos garantir que a classificação seja justa para os desafios subjetivos
+como o HackerScript?
+
+11
+
+Hacker League /
+
+Day 1
+
+• Como podemos tornar as regras explícitas para todos os membros, evitando
+sentimentos de injustiça ou aleatoriedade?
+• Como podemos assegurar que o título de “Hacker do Ano” e outros prémios são
+atribuidos de forma justa mas quantitativa, combinando a pontuação do sistema com
+outros critérios de mérito?
+• Como podemos garantir que o histórico de pontos e votações é visível para todos os
+membros, e que os movimentos mais recentes de pontos são facilmente acessíveis?
+(Definição e Atribuição de Pontos)
+• Como podemos justificar a atribuição de certos pontos para as ações extraHackNights (como marketing, limpeza do laboratório, ajuda entre membros,
+organização de workshops, participação em teambuildings, sendo esta lista
+nitidamente maior nesta fase da discussão)?
+• Como podemos decidir quais as atividades que podem ser elegíveis para ganho de
+pontos extra-HackNights?
+• Como podemos desenhar o sistema do Hacker League para que os membros sintam
+que o seu esforço é valorizado e quantificado de forma significativa?
+(Motivação e Engagement)
+• Como podemos motivar os membros a participar no jogo durante períodos de menor
+disponibilidade (ex.: época de exames)?
+• Como podemos motivar os membros pelos primeiros lugares ou pelo “Hacker do
+Ano”?
+• Como podemos aumentar o envolvimento e motivar os membros que não têm como
+objetivo principal competir pelos primeiros lugares ou pelo título de “Hacker do Ano”?
+• Como podemos assegurar que o sistema do Hacker League cria um sistema
+motivante para os membros que aspiram a títulos como “Hacker do Ano” ou “Melhor
+Projeto do Ano”, tornando o seu esforço visível e recompensador?
+(Gamificação e Dinâmicas do Jogo)
+• O que podemos¹ introduzir (ex.: a cada semestre ou trimestre) no jogo para sustentar
+o interesse e a competição?
+• Como podemos utilizar elementos de gamificação (como xad0w.b1ts e tópico extra
+dos HackerPitches) de forma a tornar a experiência mais cativante, sem desvirtuar o
+reconhecimento do mérito genuíno?
+• Como podemos identificar e celebrar proactivamente os “All-Star Hackers” e “Rookie
+Hackers” através do sistema de pontos?
+(Implementação Técnica)
+• Como podemos implementar um sistema de votação (ex.: via Discord com um bot ou
+polls, permitindo ordenação de projetos por preferência) para os desafios das
+jornadas?
+No fim, a votação da equipa ditou
+¹Segundo Knapp (see [2]) é perfeitamente permitido fazer questões que não “HMW”
+
+12
+
+Hacker League /
+
+Day 1
+
+• Como podemos tornar as regras explícitas para todos os membros, evitando
+sentimentos de injustiça ou aleatoriedade?
+• Como podemos assegurar que o sistema do Hacker League cria um sistema
+motivante para os membros que aspiram a títulos como “Hacker do Ano” ou
+“Melhor Projeto do Ano”, tornando o seu esforço visível e recompensador?
+• Como podemos motivar os membros a participar no jogo durante períodos de
+menor disponibilidade (ex.: época de exames)?
+• Como podemos desenhar o sistema do Hacker League para que os membros
+sintam que o seu esforço é valorizado e quantificado de forma significativa?
+• Como podemos assegurar que o título de “Hacker do Ano” e outros prémios são
+atribuidos de forma justa mas quantitativa, combinando a pontuação do
+sistema com outros critérios de mérito?
+como as questões vencedoras.
+
+3.4. Sprint Target
+Embora a ambição inicial para o projeto fosse o aumento da participação dos membros
+nas HackNights, uma decisão estratégica do Decider alterou significativamente o foco
+do sprint. O objetivo principal do jogo passou a ser o reconhecimento dos membros
+que já contribuem ativamente para a HackerSchool. Este desvio é notável, pois move o
+projeto de uma meta de aumentar a adesão, meta quantitativa, para uma de
+valorização e reconhecimento intrínseco. Nas semanas subsequentes, a equipa
+continuará a aprofundar este novo objetivo, garantindo que o sistema desenvolvido
+cumpra eficazmente a missão de fazer os membros sentirem-se verdadeiramente
+reconhecidos.
+
+13
+
+Hacker League /
+
+Bibliography
+
+Day 1
+
+[1] K. Salen and E. Zimmerman, Rules of Play: Game Design Fundamentals. Mit Press,
+2004.
+[2] J. Knapp, Sprint. Bantam Press, 2016.
+
+14
+
+

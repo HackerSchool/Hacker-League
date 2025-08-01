@@ -5,16 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
         <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/navbar.css">
         <script type="module" src="js/app.js" defer></script>
     </head>
     <body>
         <nav class="navbar">
             <div class="navbar-brand">
-                <img class = "logo" src="/static/images/HS_NOVO.svg" alt="HS Dashboard">
+                <img class="logo" src="/static/images/HS_NOVO.svg" alt="HS Dashboard">
             </div>
             <div class="navbar-links">
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/members">Members</a>
                 <a href="/logout">Logout</a>
-                <a href="/login">Login</a>
+            </div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="hamburger-content">
+                    <a href="/">Profile</a>
+                    <a href="/leaderboard">Leaderboard</a>
+                    <a href="/members">Members</a>
+                    <a href="/logout">Logout</a>
+                </div>
             </div>
         </nav>
         <h1>Welcome to the HS Dashboard</h1>

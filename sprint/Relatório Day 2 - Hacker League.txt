@@ -1,0 +1,654 @@
+Hacker League /
+
+Day 2
+
+Day 2
+By Armando Gonçalves
+
+📌
+
+TL;DR
+
+O presente relatório documenta o segundo dia do sprint de desenvolvimento do jogo
+“Hacker League”. O foco foi na análise de soluções de outros jogos e domínios,
+culminando na escolha das top 3 soluções. A equipa optou por uma abordagem
+“Swarm” para resolver o problema central, priorizando a construção de alicerces sólidos
+antes de desenvolver mecânicas complexas.
+
+Índice
+1. Recap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2. Remix & Improve . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.1. A equipa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2. Soluções de outros jogos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2.1. Festival Eurovisão da Canção: Pontuação “Híbrida” (Júri + Comunidade) . . . . . . 3
+2.2.2. NBA MVP Voting / Ballon d’Or: Fórmula Híbrida para Prémios MVP . . . . . . . . . . . . 3
+2.2.3. Fórmula 1: Pontuação Exponencial para o Topo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.4. Ligas Desportivas (Futebol, Basquetebol): Jornadas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.5. Fortnite / Outros: Seasons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.6. Helldivers II: Objetivos Comunitários . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.7. Jogos com Mecânicas de “Catch-up”: Multiplicadores . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.8. Duolingo / Jogos de Ação e Arcade: Combos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.9. Minecraft / The Legend of Zelda: Árvores de Habilidades e Desbloqueios . . . . 4
+2.2.10. The Resistance / Among Us / Triple Agent: Missões de Sabotagem . . . . . . . . . . . . 5
+2.2.11. Triple Agent / Jogos de RPG: Side Quests . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2.12. Dungeons & Dragons / Arbitragem Desportiva: Árbitro . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2.13. NBA / Ligas de eSports: Hall of Fame e Prémios . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2.14. Jogos Online: Leaderboard Dinâmico . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2.15. World of Warcraft / Destiny 2: Sistema de Múltiplas Moedas . . . . . . . . . . . . . . . . . . . . 5
+2.2.16. Sistemas Eleitorais: Contagem de Borda para Votação . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2.17. Fantasy Premier League: Sistema de Bonus Points (BPS) . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2.18. Game Jams / Ludum Dare: Rubricas de Avaliação Estruturadas . . . . . . . . . . . . . . . . . 6
+2.2.19. Clash of Clans / Mobile Games: Painéis de Classificação Relativos . . . . . . . . . . . . . . 6
+2.2.20. Overwatch / Rocket League / Outros: Sistema de Percentis . . . . . . . . . . . . . . . . . . . . . . 6
+2.2.21. Diablo Seasons: Reinícios Sazonais com “Legacy” Permanente . . . . . . . . . . . . . . . . . . 6
+2.2.22. Pandemic Legacy / Risk Legacy: Mecânicas de “Legacy” . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2.23. Score! Match / Jogos PvP: Partidas Iniciais Fáceis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3. Breve resumo da discussão . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.4. Top 3 solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.4.1. Sistema de Votação tipo Eurovisão . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.4.2. Multiplicadores & Combos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.4.3. Community Goals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.5. Esboços das “Big Ideas” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+
+1
+
+Hacker League /
+
+Day 2
+
+2.6. “Divide or Swarm?” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3. 4-Step Sketching . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.1. Notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2. Ideas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.3. Crazy 8′s . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.4. Solution Sketch . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4. Considerações Finais . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+
+1. Recap
+O primeiro dia do sprint foi dedicado à compreensão e definição do jogo Hacker League. A
+equipa multidisciplinar, composta por Armando Gonçalves (Facilitator), Gonçalo Fecha
+(Decider), Gonçalo Azevedo, André Caseiro e André Santos, reuniu-se para discutir o conceito
+inicial do jogo: gamificar as HackNights da HackerSchool. A ideia central consistia em
+transformar cada HackNight numa “jornada” onde equipas de 3 elementos, baseadas nos
+projetos existentes, competiam por pontos através de duas fases: HackerPitch
+(apresentações de 1m30s) e HackerChallenge (desafios práticos de 1 hora).
+Uma decisão crucial foi tomada pelo Gonçalo Fecha (Decider): o objetivo do projeto mudou
+de aumentar a participação nas HackNights para recompensar os melhores
+contribuidores da HackerSchool. Esta mudança fundamental alterou o foco do sistema de
+gamificação de um mecanismo de motivação para um sistema de reconhecimento e
+premiação. A equipa viu o potencial do jogo e discutiu expandir o conceito para além das
+HackNights, implementando-o em todas as pequenas ações e movimentos na HackerSchool.
+A seguir, o resultado do último dia de sprint:
+
+Com a ajuda do feedback do prof. Carlos Martinho, o mapa recebeu um upgrade, sendo a
+natureza de loop agora mais evidenciada. Ao mesmo tempo, os HMW’s foram colocados no
+mapa:
+
+2
+
+Hacker League /
+
+Day 2
+
+2. Remix & Improve
+2.1. A equipa
+A equipa do Day 2 sofreu algumas alterações em relação ao primeiro dia. O Gonçalo
+Azevedo não pôde estar presente, sendo substituído pelo Filipe Piçarra. Adicionalmente,
+tivemos alguns cameos como o José Lopes, expert técnico - fundamental para as
+tecnologias que seriam utilizadas (Vikunja e HS-WebApp) - e o João Rodrigues, ex-presidente
+e Game Master experiente de DnD. O Filipe Vaz, vice-presidente e conhecedor de vários
+jogos, também participou na sessão. Esta composição alargada permitiu uma abordagem
+mais técnica e especializada, essencial para a fase de desenvolvimento do sistema.
+
+2.2. Soluções de outros jogos
+O Day 2 começou com a recolha de soluções de outros jogos e domínios que poderiam
+resolver os desafios identificados no Day 1. De seguida, segue a lista de soluções
+encontradas pela equipa.
+2.2.1. Festival Eurovisão da Canção: Pontuação “Híbrida” (Júri + Comunidade)
+A pontuação final de cada concorrente é uma soma da votação de um júri de especialistas de
+cada país e da votação do público (televoto). Na Hacker League, a classificação de uma task
+poderia ser 50% baseada na votação de todos os participantes (a comunidade) e 50% na
+avaliação de um painel de “especialistas” (ex: Direção da HS, coordenadores, HackerMaster).
+Isto equilibra a popularidade de um projeto com a sua qualidade técnica e inovação,
+tornando a avaliação mais robusta.
+2.2.2. NBA MVP Voting / Ballon d’Or: Fórmula Híbrida para Prémios MVP
+Combinação ponderada de dados objetivos (40% PCC), votação por pares (30%) e júri
+especialista (30%). Equilibra mérito quantitativo com reconhecimento qualitativo pela
+comunidade.
+
+3
+
+Hacker League /
+
+Day 2
+
+2.2.3. Fórmula 1: Pontuação Exponencial para o Topo
+Os pontos são atribuídos de forma não-linear, com uma grande recompensa para os
+primeiros lugares (ex: 25, 18, 15 pontos para o pódio) e uma “cauda longa” de pontos
+menores para as posições seguintes. Em vez de uma diferença de 1 ponto entre cada
+posição, as melhores equipas em cada jornada seriam significativamente mais
+recompensadas. Por exemplo, o 1º lugar ganha 25 pontos, o 2º ganha 18, mas a partir do 5º
+lugar todos recebem 1 ponto simbólico pela participação. Isto incentiva a lutar pela vitória
+em vez de se contentar com uma posição mediana.
+2.2.4. Ligas Desportivas (Futebol, Basquetebol): Jornadas
+A competição decorre ao longo de uma temporada com rondas (jornadas) regulares, onde os
+pontos são acumulados para determinar o campeão final. Esta ideia formaliza as HackNights
+como “jornadas” de uma liga anual, criando uma narrativa e um sentido de progressão ao
+longo do ano, com uma classificação geral que é atualizada após cada evento.
+2.2.5. Fortnite / Outros: Seasons
+Jogos como o Fortnite mantêm o interesse dos jogadores ao longo do tempo através de
+“seasons” temáticas, que trazem novidade e motivação. Em vez de seasons genéricas
+(“Season 6”), cada temporada na Hacker League pode ter um tema próprio (ex: Sci-Fi,
+Cowboys, Zombies ou tech-related, tipo AI), tornando cada ciclo mais memorável e relevante
+para a comunidade. O tema pode influenciar desafios, pequenas missões ou o ambiente
+visual, funcionando como um “refresh” mental. A pequena nota deixada desde logo por
+quem deu a sugestão foi ser importante manter o sistema simples e não sobrecarregar a
+organização ou os participantes. As seasons devem ser um incentivo leve, não uma
+obrigação, e podem ser escolhidas pela comunidade para aumentar o envolvimento.
+2.2.6. Helldivers II: Objetivos Comunitários
+Toda a comunidade de jogadores trabalha em conjunto para atingir uma meta global (ex:
+libertar um planeta). Se o objetivo for cumprido, todos os que contribuíram recebem uma
+recompensa significativa. O HackerMaster poderia definir um “Objetivo Comunitário” para o
+semestre (ex: “Contar com 30 pessoas numa HackNight” ou “Fazer 20 tasks dos projetos no
+mês”). Se a meta for atingida, todos os membros ativos da HackerSchool ganhariam um
+bónus de pontos, promovendo a colaboração em vez da competição pura.
+2.2.7. Jogos com Mecânicas de “Catch-up”: Multiplicadores
+O valor das missões ou eventos aumenta à medida que o jogo se aproxima do fim. As
+jornadas realizadas poderiam valer mais pontos à medida que se aproximam do fim (ex: um
+multiplicador de 1.5x). Isto mantém a competição acesa até ao final e dá uma oportunidade
+de recuperação a quem teve um início mais fraco ou esteve ausente, garantindo que uma
+jornada em falta não seja decisiva.
+2.2.8. Duolingo / Jogos de Ação e Arcade: Combos
+Realizar ações de sucesso de forma consecutiva (combos) gera um bónus. Uma equipa que
+participa em 3 HackNights seguidas poderia ganhar um bónus de pontos na terceira. Isto
+recompensa a consistência e o empenho contínuo.
+2.2.9. Minecraft / The Legend of Zelda: Árvores de Habilidades e Desbloqueios
+Para construir uma ferramenta avançada ou aceder a uma nova área, é preciso primeiro obter
+itens ou completar missões anteriores. Certos desafios mais complexos (e com maior
+4
+
+Hacker League /
+
+Day 2
+
+pontuação) só poderiam ser acedidos por equipas que já completaram com sucesso desafios
+anteriores ou que demonstraram certas competências. Isto cria um percurso de progressão e
+valoriza as conquistas passadas.
+2.2.10. The Resistance / Among Us / Triple Agent: Missões de Sabotagem
+Os “impostores” ou “traidores” não têm apenas o objetivo de perturbar, mas sim missões
+secretas e específicas para cumprir (ex: “Garantir que a missão 3 falhe”, “Fazer com que o
+jogador X seja acusado”). A equipa “sabotadora” (xad0w.b1ts) receberia uma missão secreta e
+subtil em cada jornada (ex: “Incluir uma informação falsa no vosso pitch que pareça credível”
+ou “Inserir um «xb» no projeto de outra equipa”).
+2.2.11. Triple Agent / Jogos de RPG: Side Quests
+Para além do objetivo principal, um jogador pode ter uma missão secreta pessoal que lhe dá
+pontos extra, por vezes com condições peculiares (ex: “Ganha se o jogador Y ficar em
+segundo lugar”). O HackerMaster poderia atribuir “Side Quests” secretas a equipas aleatórias
+(não apenas aos sabotadores até!). Ex: “Ganha 15 pontos extra se conseguires usar a palavra
+‘disruptivo’ 3 vezes no teu pitch sem que pareça forçado”.
+2.2.12. Dungeons & Dragons / Arbitragem Desportiva: Árbitro
+Existe uma figura de autoridade (o Dungeon Master ou o árbitro) que interpreta as regras,
+resolve ambiguidades e valida ações que não estão explicitamente no livro de regras,
+garantindo a consistência e a justiça do jogo. O HackerMaster atua como este árbitro,
+podendo validar “esforço extra” para atribuir pontos bónus, decidir se uma tarefa é elegível
+para pontuação, e servir como o guardião de uma futura “Constituição da Hacker League”, o
+documento que torna todas as regras explícitas.
+2.2.13. NBA / Ligas de eSports: Hall of Fame e Prémios
+Para além do prémio principal de campeão, existem múltiplas distinções que reconhecem a
+excelência em áreas específicas (MVP, Rookie of the Year, Most Assists). Criar um “Hall of
+Fame” com prémios anuais como “Hacker do Ano” (MVP), “Estagiário do Ano” (Rookie of the
+Year), “Mestre do Pitch”, “HackerDebugger” ou “Membro Mais Assíduo”. Isto cria múltiplos
+caminhos para o sucesso e reconhece diferentes tipos de talento, motivando jogadores que
+não são puramente competitivos.
+2.2.14. Jogos Online: Leaderboard Dinâmico
+O painel de classificação não mostra apenas a lista de pontos, mas também destaca
+atividades recentes, como “Última equipa a ganhar pontos” ou “Maior subida da semana”.
+Torna o leaderboard mais vivo e dinâmico, dando visibilidade momentânea a mais equipas e
+não apenas às que estão no topo.
+2.2.15. World of Warcraft / Destiny 2: Sistema de Múltiplas Moedas
+Criação de três tipos de “moedas” distintas: Pontos de Jornada (PJ) para desempenho
+competitivo, Pontos de Contribuição Comunitária (PCC) para ações meritórias fora da
+competição, e Pontos Sombra (PS) para mecânicas de sabotagem secretas. Permite múltiplos
+caminhos para o reconhecimento, evitando que diferentes tipos de mérito se anulem
+mutuamente.
+
+5
+
+Hacker League /
+
+Day 2
+
+2.2.16. Sistemas Eleitorais: Contagem de Borda para Votação
+Cada votante classifica todas as equipas, convertendo classificações em pontos (N pontos
+para 1º lugar, N-1 para 2º, etc.). Reduz a vulnerabilidade à votação estratégica
+comparativamente a sistemas de votação simples.
+2.2.17. Fantasy Premier League: Sistema de Bonus Points (BPS)
+Sistema que utiliza estatísticas detalhadas para criar uma pontuação de desempenho para
+cada jogador, onde os três melhores recebem pontos bónus - três pontos para o melhor,
+dois para o segundo e um para o terceiro. Permite reconhecer desempenhos excepcionais
+mesmo em equipas que não ficaram em primeiro lugar.
+2.2.18. Game Jams / Ludum Dare: Rubricas de Avaliação Estruturadas
+Avaliação baseada em critérios específicos (Originalidade, Implementação Técnica, Impacto/
+Diversão, Adesão ao Tema) numa escala de 1-5. Transforma votação subjetiva em revisão por
+pares estruturada, aumentando a perceção de justiça.
+2.2.19. Clash of Clans / Mobile Games: Painéis de Classificação Relativos
+No leaderboard, mostrar posição relativa (5 equipas acima e 5 abaixo) em vez da classificação
+toda. Torna objetivos mais tangíveis e uma participação menos desmotivante.
+2.2.20. Overwatch / Rocket League / Outros: Sistema de Percentis
+Mostrar “Top 30%” em vez de “Posição 87”. Dá mais confiança ao jogador
+independentemente da posição absoluta.
+2.2.21. Diablo Seasons: Reinícios Sazonais com “Legacy” Permanente
+Pontos dão reset anualmente, mas conquistas ficam numa “Hall of Fame” permanente.
+Mantém competição fresca enquanto preserva história e conquistas.
+2.2.22. Pandemic Legacy / Risk Legacy: Mecânicas de “Legacy”
+Vencedores de uma temporada ganham direito de criar novo tipo de desafio para a
+temporada seguinte. Transforma jogadores em co-criadores, aumentando investimento a
+longo prazo.
+2.2.23. Score! Match / Jogos PvP: Partidas Iniciais Fáceis
+Jogos PvP como Score! Match implementam uma estratégia de “onboarding” inteligente,
+onde os jogadores enfrentam partidas iniciais mais fáceis contra oponentes de nível inferior
+ou bots simplificados. Esta abordagem permite que os jogadores se familiarizem com as
+mecânicas básicas, ganhem confiança e desenvolvam um sentimento de progressão antes de
+enfrentar desafios mais complexos. Na Hacker League, esta mecânica poderia ser de alguma
+forma traduzida para não só facilitar a integração de novos membros, mas também construir
+momentum e entusiasmo, criando uma base sólida para as competições mais intensas que se
+seguirão ao longo do semestre.
+Após as várias soluções serem postas em cima da mesa, chegou a parte mais difícil: escolher
+as top 3 soluções.
+
+2.3. Breve resumo da discussão
+A discussão para a escolha das 3 soluções mais importantes abordou bastantes pontos, e
+voltou a falar-se no foco em criar um sistema para incentivar e recompensar os
+
+6
+
+Hacker League /
+
+Day 2
+
+comportamentos desejados de mérito, jogo justo e contribuição para a comunidade. Cada
+ponto atribuído na Hacker League deve possuir uma justificação clara e estar intrinsecamente
+ligado aos valores da HackerSchool. O sistema deve funcionar como uma economia
+impulsionada pelos jogadores, onde diversas formas de contribuição, e não apenas as
+vitórias competitivas, desempenham um papel vital no ecossistema global. Esta filosofia
+aborda diretamente a questão “Como podemos desenhar o sistema do Hacker League
+para que os membros sintam que o seu esforço é valorizado e quantificado de forma
+significativa?”.
+A solução das várias moedas surge com bastante destaque. De facto parece impedir que
+diferentes tipos de mérito se anulem mutuamente. Um membro que seja um contribuidor
+comunitário excecional não deve ser ofuscado por um jogador puramente competitivo, e
+vice-versa. Este sistema cria caminhos múltiplos para o reconhecimento, permitindo que os
+jogadores persigam diferentes formas de excelência sem serem forçados a um compromisso
+direto entre, por exemplo, ajudar um colega (ganhando PCC) e preparar-se para um desafio
+(ganhando PJ). O sistema de PCC é, na sua essência, um mecanismo formalizado de
+“agradecimento”, que transforma o “bom civismo” abstrato em reconhecimento concreto e
+quantificável, alinhando-se com o objetivo de fazer com que os membros sintam “o tempo
+investido recompensado”. Esta abordagem fomenta um ecossistema mais inclusivo que
+valoriza múltiplas facetas do que significa ser um “hacker” valioso na comunidade da
+HackerSchool, alinhando-se com o objetivo de reconhecer os membros mais ativos.
+Por outro lado a mecânica de sabotagem dos x-biters introduz uma camada de dedução
+social e intriga. O seu sistema de pontuação deve ser suficientemente atraente para criar
+tensão, mas equilibrado para não ofuscar o objetivo principal de reconhecimento do mérito,
+nem tão pouco o objetivo secundário de aumentar a socialização. Para que a mecânica seja
+eficaz, a equipa x-biter necessita de missões de sabotagem claras e verificáveis, em vez de
+uma disrupção vaga. Inspirando-se em jogos como The Resistance e Dead of Winter, onde os
+traidores têm objetivos específicos , o HackerMaster atribuirá uma carta de missão secreta à
+equipa x-biter em cada jornada. Estas missões devem ser discretas e alinhadas com o lore
+dos xad0w.b1ts e da “Irmandade Secreta do Técnico”, transformando a sabotagem numa
+forma de narrativa emergente. Exemplos de missões, como atrás referidas:
+• “Sabotagem de Pitch: Incluir subtilmente uma informação factualmente incorreta na vossa
+apresentação que passe despercebida pela maioria.”
+• “Ajuda Clandestina: Durante o HackerChallenge, ajudar secretamente uma equipa
+adversária a superar um obstáculo, sem que eles percebam a origem da ajuda.”
+• “Criptografia do Legado: Incorporar uma citação de um fundador lendário da IST na vossa
+apresentação de uma forma que pareça natural.”
+Esta abordagem transforma o subsistema numa ferramenta poderosa para a interação social,
+respondendo diretamente ao “Experience Goal” de “ser obrigado a interagir uns com os
+outros” de uma forma mais complexa e envolvente.
+No entanto, a preocupação da equipa (especialmente do autor) com a justiça é uma questão
+central que deve ser abordada com rigor. A neurociência demonstra que a justiça é percebida
+como uma recompensa primária no cérebro [1], [2], enquanto a injustiça ativa as mesmas
+redes neuronais que a dor física [3], [4], [5]. Consequentemente, a perceção de justiça não é
+um luxo, mas um pré-requisito para o envolvimento e a motivação a longo prazo.
+7
+
+Hacker League /
+
+Day 2
+
+Um sistema de pontuação linear simples (ex: 1º=10, 2º=9, etc.) é vulnerável a votação
+estratégica e não recompensa adequadamente a excelência. Um sistema de votação e
+pontuação inspirado em competições de alto perfil como a Fórmula 1 e o Festival Eurovisão
+da Canção parecem as soluções óbvias, com Contagem de Borda como método de votação.
+E embora o Teorema da Impossibilidade de Arrow [6] demonstre que não existe um sistema
+de votação classificada “perfeito” que satisfaça todos os critérios de escolha racional
+simultaneamente, continua a ser a melhor solução que a equipa consegue pensar e vai de
+encontro à filosofia open-source e de “democratização” defendida pela HackerSchool.
+Adicionalmente, no que toca este último ponto da justiça, os “Desafios Subjetivos” são uma
+área de grande preocupação para a equipa. Desafios como Pior UI ou HackerScript
+dependem da perceção humana. A chave para a legitimidade pode passar por estruturar a
+subjetividade. A possível solução passaria então pela implementação de uma rubrica de
+avaliação formal, uma prática comprovada em competições criativas como Game Jams e
+Hackathons. Os critérios propostos no Day 1 — Originalidade, Implementação Técnica,
+Impacto/Diversão e Adesão ao Tema — são o ponto de partida; todos os participantes
+(exceto a sua própria equipa) avaliarão cada projeto numa escala de 1 a 5 para cada critério
+da rubrica. O HackerMaster somará as pontuações para gerar a classificação final. A ideia é
+transformar uma votação baseada em “sentimento” numa revisão por pares estruturada,
+aumentando drasticamente a justiça percebida e respondendo diretamente à questão “Como
+podemos garantir que a classificação seja justa para os desafios subjetivos?”. Além disso, este
+ato de julgar funciona como uma ferramenta pedagógica: ao usar a rubrica, os participantes
+internalizam os critérios de um bom projeto, reforçando a missão de “Learn-by-doing” da
+HackerSchool.
+Ainda dentro deste contexto, começou a surgir na equipa a escola do “Catálogo”, ou seja,
+pessoas que acham que a solução passa por catalogar várias atividades pontuáveis como
+“Ida ao lab”, “ajudar um colega” ou “trabalho de marketing”. A atribuição de valores a cada
+atividade funciona como uma ferramenta de comunicação estratégica: ao atribuir mais
+pontos a certas ações (ex: organizar um workshop vs. limpar o laboratório), a direção da
+HackerSchool pode sinalizar à comunidade quais os comportamentos que mais valoriza.
+A terminar, curiosamente uma das questões (senão a) mais crítica levantada pela equipa foi:
+“Conseguimos manter as pessoas interessadas no jogo durante o ano todo?”. Esta
+preocupação é especialmente relevante para jogadores que possam ficar para trás na
+classificação ou que enfrentem períodos de menor disponibilidade, como épocas de exames.
+A análise de várias mecânicas de “catch-up” (recuperação) revela que as abordagens que
+punem o líder (“rubber banding”) são frequentemente percebidas como anti-meritocráticas e
+podem diminuir a motivação [7]. Uma estratégia mais eficaz é aumentar o valor dos objetivos
+à medida que o jogo avança. As soluções propostas dos Multiplicadores, Combos e
+Community Goals foram recebidas com grande entusiasmo. Assim decidiram-se as top 3
+solutions.
+
+2.4. Top 3 solutions
+Apesar de todas as soluções serem interessantes e passíveis de serem implementadas, com
+base nas principais preocupações da equipa, escolheram-se as principais soluções. De
+seguida argumentou-se a favor destas soluções (“lightning demos”) e esboçou-se as “big
+ideas” de cada top solution.
+
+8
+
+Hacker League /
+
+Day 2
+
+2.4.1. Sistema de Votação tipo Eurovisão
+Todos os membros argumentaram a favor do facto de se estar a democratizar o processo de
+decisão/pontuação, ficando assim a distribuição dos pontos não apenas nas mãos de uma
+elite (coordenadores ou HackerMaster) ou de um sistema de atribuição de pontos
+determinístico fechado. Também foi argumentado que é um sistema que já foi testado e
+comprovado em competições de alto perfil, e que tenta equilibrar qualidade técnica com
+popularidade. Foi escolhido o sistema de Eursovisão no fim por ser o mais conhecido na
+generalidade da equipa. O sistema da Fórmula 1, da Ballon D’Or, a Contagem de Borda e o
+sistema das Game Jams estão em todo o caso inerentemente associados a esta
+implementação, mas são já tecnicalidades; a grande ideia a reter da Eurovisão é sim que o
+sistema de pontuação deve ser transparente e participativo, não apenas dependente num
+algoritmo, mas dando oportunidade a todos os membros de classificarem os seus pares,
+talvez até com informação que escapa por vezes aos orgãos de tomada de decisão dito
+“supremos” (ex: saber o tempo que certa pessoa investiu num projeto, saber de problemas
+pessoas de certo membro e a sua consequente capacidade de superação, …).
+2.4.2. Multiplicadores & Combos
+O grande ponto defendido por toda a equipa é a naturalidade com que recompensa a
+consistência e a participação contínua. É uma forma de dar “catch-up” que não pune os
+líderes, sendo também por isso muito apreciada. Outros pontos referidos foram o facto de
+manter a competição interessante até ao fim e a capacidade dos Combos poderem ser
+adaptados a diferentes contextos.
+2.4.3. Community Goals
+Em relação aos objetivos de comunidade, foi destacada a ideia de fomentar a colaboração ao
+invés da competição. Toda a comunidade estar a trabalhar para um objetivo comum cria um
+espírito de pertença e de comunidade, para além de poder ser usada como uma narrativa
+comunitária, com espaço para integrar o lore dos xad0w.b1ts, como sugerido pelo autor. Tal
+como os Combos, foi relembrado o potencial de poder ser adaptado a diferentes contextos.
+No geral toda a equipa mencionou a grande ideia ser a recompensa coletiva por um esforço
+conjunto.
+
+2.5. Esboços das “Big Ideas”
+
+9
+
+Hacker League /
+
+Day 2
+
+2.6. “Divide or Swarm?”
+Após a listagem das soluções propostas, a equipa enfrentou uma decisão estratégica:
+dividir-se em subgrupos para trabalhar em problemas específicos ou manter-se unida
+para atacar os obstáculos em conjunto.
+A escolha foi unânime: Swarm. O foco principal é resolver a questão da atribuição de
+pontos - claramente o ponto mais sensível identificado no Day 1. Como apenas três
+desenvolvedores estão disponíveis, decidiu trabalhar-se em conjunto no mesmo problema,
+atacando os vários obstáculos técnicos um a um. Na imagem Figure 1 está rodeado a azul o
+foco deste grupo de trabalho - a parte mais complicada tecnicamente continua a ser a
+implementação do sistema de pontuação. A integração do poder de administrador do
+HackerMaster por um lado, a integração das votações provenientes das duas fases da
+jornada mais a votação dos x-biters por outro. Ambicionamos um sistema que proporcione
+uma forma fluida, fácil e rápida de incorporar estes elementos de forma que o foco deixe de
+estar na pontuação e na inserção da pontuação em si, e passe a estar nas atividades e no
+trabalho na HackerSchool.
+
+10
+
+Hacker League /
+
+Day 2
+
+3. 4-Step Sketching
+É chegado talvez um dos momentos mais decisivos do processo de Sprint: o esboço das
+soluções. Nesta fase, é pedido a cada um dos membros da equipa que desenhe a sua
+solução para o problema, passando por um processo de 4 passos:
+1. “Notes”
+2. “Ideas”
+3. “Crazy 8′s”
+4. “Solution Sketch”
+De seguida vai ser exposto o processo do autor para cada um dos passos, de uma forma
+muito esquemática também para não perder autenticidade - as notas durante esta fase são
+muito provisionais - e só no final serão revelados os sketches dos restantes membros da
+equipa, neste dia ainda anónimos.
+
+3.1. Notes
+Long-term Goal: Recompensar os melhores contribuidores da HackerSchool através de um
+sistema de gamificação que reconheça múltiplas formas de mérito.
+Key Questions:
+• Como desenhar o sistema para que os membros sintam que o seu esforço é valorizado e
+quantificado?
+• Como garantir que a classificação seja justa para desafios subjetivos?
+• Como manter as pessoas interessadas durante o ano todo?
+• Como equilibrar competição com colaboração?
+HMW Questions:
+• Como podemos democratizar o processo de pontuação?
+• Como podemos estruturar a subjetividade em avaliações?
+• Como podemos criar múltiplos caminhos para o reconhecimento?
+Top 3 Solutions:
+11
+
+Hacker League /
+
+Day 2
+
+1. Sistema de Votação tipo Eurovisão (democratização + transparência)
+2. Multiplicadores & Combos (catch-up sem punir líderes)
+3. Community Goals (colaboração vs competição)
+Sistema de Múltiplas Moedas:
+• PJ (Pontos de Jornada) - desempenho competitivo
+• PCC (Pontos de Contribuição Comunitária) - ações meritórias
+• PS (Pontos Sombra) - mecânicas de sabotagem
+Problemas Técnicos Identificados:
+• Integração do poder de administrador do HackerMaster
+• Integração das votações das duas fases da jornada
+• Sistema de votação dos x-biters
+• Interface fluida e rápida para inserção de pontuação
+• Implementação com API existente
+
+3.2. Ideas
+Leaderboard com vários painéis/separadores:
+• Micro-painéis relativos (5 equipas acima/abaixo)
+• Classificações por percentil (“Top 30%”)
+• Painéis sociais (filtrar por amigos/grupos)
+• Múltiplos separadores para diferentes tipos de motivação
+Painéis Específicos:
+1. “A Liga” - PJ acumulados (competitivo)
+2. “HackerTasks” - PCC acumulados (reconhecimento)
+3. “Galeria da Fama” - categorias mensais dinâmicas
+Categorias Mensais:
+• “Pitch do Mês” - para a equipa que juntar mais pontos na fase 1 do mês anterior
+• “Demolidor de Desafios” - para a equipa vencedora da fase 2 do mês anterior
+• “Estrela em Ascensão” - para a equipa com maior diferença de pontos na jornada do mês
+anterior
+• “Mestre da Colaboração” - para a equipa que juntar mais pontos PCC no mês anterior
+Mecânicas de Legado:
+• Reinícios sazonais anuais
+• “Desafio do Campeão” - vencedor anterior cria novo desafio
+• Hall of fame permanente
+Sistema de Votação Híbrido:
+• Pontos PCC são iguais para todas as tasks (excepto para a tarefa “Fazer Workshop” ou
+outra tarefa que seja apontada especificamente pelo HackerMaster/Constituição),
+independentemente do nível de dificuldade: task concluida = X PCC.
+• Na fase 1 durante o HackerPitch, é dever dos oradores mostrarem o seu trabalho, o tempo
+investido e o esforço que tiveram que fazer para superar os obstáculos durante a realização
+das tasks específicas de cada projeto. PJ vão ser distribuidos depois com base na votação
+onde cada pessoa irá classificar cada equipa, ou seja, cada orador, com base em cinco
+parâmetros. Com base no resultado final desta votação, serão atribuídos pontos PJ extra
+aos pontos PCC já atribuídos às tarefas da equipa. Estes PJ extra, atribuídos nesta fase,
+podem de facto distinguir equipas que tiveram mais esforço e mais tempo investido. Para
+12
+
+Hacker League /
+
+Day 2
+
+além disso, a avaliação também considera o respeito do tempo e a utilização da palavra
+especial, dada pelo HackerMaster antes da Fase 1.
+• Na fase 2, se for um desafio objetivo, não haverá votação. O resultado é definido por
+métricas como tempo ou outros parâmetros, por exemplo, velocidade de reação
+(HackerOlympics).
+• Se for um desafio subjetivo, pode haver uma votação ao estilo Eurovisão. Cada equipa
+funciona como um país, e ordena as outras equipas da que gostou mais até à que gostou
+menos, atribuindo pontos (12 pontos para a equipa mais votada e assim sucessivamente).
+No final, esses pontos são somados, e a este novo leaderboard com as equipas é aplicado
+uma distribuição final de pontos semelhante à da Fórmula 1.
+• Pontos PS são convertidos no final para PJ.
+• Para o prémio do Hacker do Ano, pode fazer mais sentido uma votação do estilo Ballon
+d’Or, onde 40% da pontuação total pode ser o total de pontos (PJ + PCC), 30% pode ser o
+voto da direção e 30% pode ser o voto da comunidade.
+Mecânicas de Catch-up:
+• Multiplicadores progressivos na pontuação final dada “à Fórmula 1” em cada jornada(1.5x)
+• Combos: participação sucessiva em HackNights/teambuilding/workshop, Commits
+semanais sucessivos, ajudar 3+ colegas, atualizar o Logbook do projeto 1 vez por mês por
+meses consecutivos, fazer pelo menos 2 tasks por mês.
+• Community Goals: Atingir 30 participantes numa HackNight, Ter 20 tasks de projetos
+concluídas num mês, Alcançar 100 reações no post de anúncio da próxima HackNight nas
+redes sociais, Fazer 200 pontos numa hacknight, Fazer 20 pontos numa semana.
+Recompensas: snacks surpresa, viagens surpresa, vouchers, etc.
+Missões de Sabotagem (x-biters):
+• “Sabotagem de Pitch” - informação falsa subtil
+• “O Cavalo de Tróia”: Inserir um bug inofensivo, mas cómico (ex: um console.log(“x-biters
+esteve aqui”)), no código de outra equipa durante a fase de desafios.
+• “Criptografia do Legado” - citações de fundadores da IST no pitch
+• “Mestre dos Sussurros”: Convencer um membro de outra equipa a usar uma palavra-chave
+específica (ex: “sinergia”) durante o seu pitch, sem que ele saiba que faz parte de uma
+missão.
+Side Quest:
+• “Poeta Disruptivo”: Ganhar 15 pontos extra se a equipa conseguir usar a palavra
+“disruptivo” 3 vezes no seu pitch sem que soe forçado.
+• “O Oráculo”: Prever corretamente qual a equipa que ficará em 2º lugar na jornada.
+• “O Protetor”: A tua missão é garantir que a equipa Y (designada secretamente) não fica em
+último lugar.
+• “O Minimalista”: Fazer o pitch do projeto em exatamente 60 segundos (nem mais, nem
+menos).
+• “O Poliglota”: Usar, de forma justificada, três linguagens de programação diferentes na
+resolução do HackerChallenge.
+• “O Meme Lord”: Incluir um meme relevante e engraçado sobre programação no pitch que
+faça pelo menos metade da sala rir.
+Hall of Fame Anual:
+• “Hacker do Ano” (MVP)
+
+13
+
+Hacker League /
+
+Day 2
+
+• “Estagiário do Ano” (Rookie)
+• “Mestre do Pitch”: para a equipa com o melhor pitch
+• “HackerDebugger”: Reconhecimento para quem mais ajudou a resolver problemas técnicos
+nos projetos dos outros.
+• “Membro Mais Assíduo”
+• “x-biter Supremo”: Para o sabotador que completou mais missões secretas com sucesso
+sem nunca ter sido descoberto.
+• “Fénix”: Para a equipa que fez a recuperação mais impressionante na classificação ao longo
+do ano.
+• “O Bom Samaritano”: Atribuído por votação da comunidade ao membro mais prestável e
+que melhor encarna o espírito de ajuda mútua.
+
+3.3. Crazy 8′s
+Durante 8 minutos, o autor desenhou em cada divisão um esboço de uma solução para o
+problema, com 1 minuto para cada divisão.
+
+Figure 2: Crazy 8's - Esboços rápidos de soluções
+O sketch final surgiu de uma forma muito natural após o Crazy’s 8.
+
+3.4. Solution Sketch
+De seguida são apresentados os 4 esboços finais apresentados por quatro elementos da
+equipa, sujeitos a votação no próximo dia.
+
+14
+
+Hacker League /
+
+Day 2
+
+Figure 3: Leaderboard detalhístico
+
+Figure 4: Give & Gain
+
+15
+
+Hacker League /
+
+Day 2
+
+Figure 6: Seasonal Leaderboard
+
+Figure 5: Extra Steps Comunism
+
+4. Considerações Finais
+O Day 2 do sprint de desenvolvimento da Hacker League revelou uma abordagem
+estratégica focada na construção de alicerces sólidos. Esboços de soluções foram feitos e a
+equipa está pronta para escolher o sistema final e começar a pensar em iniciar a
+prototipagem. Nesta fase do desenvolvimento, as dinâmicas específicas dos xad0w.b1ts
+podem parecer estar a receber menos atenção. No entanto, esta é uma decisão estratégica.
+O foco primordial da equipa está, neste momento, em construir as bases e os alicerces de um
+sistema de pontuação que seja sólido, justo e transparente para todos os participantes. A
+criação de um mecanismo de pontuação robusto, inspirado em modelos como o da
+Eurovisão e da Fórmula 1, é a prioridade para garantir a legitimidade e o sucesso a longo
+prazo da Hacker League. Uma vez que estes alicerces estejam bem assentes e o sistema
+principal funcione de forma fluida e fiável, a equipa terá a base sólida necessária para, então,
+construir e explorar com maior profundidade as narrativas e mecânicas mais complexas,
+como as missões de sabotagem e a lore dos xad0w.b1ts, enriquecendo a experiência global
+do jogo. Um sistema sólido abre portas para inovações futuras sem limites.
+
+Bibliography
+[1] G. Tabibnia and M. D. Lieberman, “Fairness and cooperation are rewarding: Evidence from
+social cognitive neuroscience,” Annals of the New York Academy of Sciences, vol. 1118, pp.
+90–101, 2007.
+[2] D. J.-F. de Quervain and others, “The Neural Basis of Altruistic Punishment,” Science, vol.
+305, pp. 1254–1258, 2004.
+[3] K. et al., “Neurobiological mechanisms of responding to injustice,” Journal of
+Neuroscience, vol. 38, p. …, 2018.
+[4] G. Novembre, M. Zanon, and G. Silani, “Empathy for social exclusion involves the
+sensory‑discriminative component of pain,” Social Cognitive and Affective Neuroscience,
+vol. 10, no. 2, pp. 153–164, 2014.
+
+16
+
+Hacker League /
+
+Day 2
+
+[5] N. I. Eisenberger, M. D. Lieberman, and K. D. Williams, “Does rejection hurt? An fMRI
+study of social exclusion,” Science, vol. 302, pp. 290–292, 2003.
+[6] K. J. Arrow, Social Choice and Individual Values. John Wiley & Sons, 1951.
+[7] T. T. is to Stay Behind? Exploring the Design Space of Player Balancing Mechanics,
+“Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems,” in
+CHI, 2024.
+
+17
+
+

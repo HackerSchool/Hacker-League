@@ -1,0 +1,336 @@
+Hacker League /
+
+Day 3
+
+Day 3
+By Armando Gonçalves
+
+📌
+
+TL;DR
+
+O presente relatório documenta o terceiro dia do sprint de desenvolvimento do jogo
+“Hacker League”. O foco foi na convergência das soluções através da análise dos 4
+sketches desenvolvidos. A equipa definiu um storyboard detalhado de 15 painéis,
+integrando elementos dos melhores sketches e estabelecendo um player flow claro. O
+planeamento exaustivo preparou a equipa para a fase de prototipagem, eliminando
+incertezas e garantindo eficiência na construção do protótipo.
+
+Índice
+1. Recap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Converge . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.1. A equipa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2. “Art Museum” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3. “Heat Map” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.4. “Speed Critique” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.4.1. “Leaderboard detalhístico” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.4.2. “Give & Gain” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.4.3. “Extra Steps Communism” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.4.4. “Seasonal Leaderboard” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.5. “Straw Poll” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.1. André Santos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.2. André Caseiro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.3. Armando Gonçalves . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5.4. Filipe Vaz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.6. Vencedores . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3. Storyboard . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.1. “Player Flow” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2. Resultado e comentários finais . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+1. Recap
+O segundo dia do sprint de desenvolvimento do jogo “Hacker League” foi marcado pela
+exploração e seleção de soluções. A composição da equipa teve algumas alterações em
+relação ao Dia 1, com o Filipe Piçarra a substituir Gonçalo Azevedo. Contou também com a
+participação de especialistas como José Lopes (perito técnico nas tecnologias que vão servir
+de base para o jogo, nomeadamente no Vikunja, sistema de gestão de tarefas interno, e na
+HS_WebApp, frontend legacy para o Hacker League), João Rodrigues (ex-presidente e Game
+Master de DnD) e Filipe Vaz (vice-presidente), permitindo uma abordagem mais técnica e
+especializada. Foram recolhidas e discutidas diversas soluções de outros jogos e domínios
+para resolver os desafios identificados. As mais importantes e selecionadas incluíram:
+
+1
+
+Hacker League /
+
+Day 3
+
+• Pontuação Híbrida (Tipo Eurovisão): para equilibrar popularidade com qualidade técnica e
+inovação;
+• Pontuação tipo Fórmula 1: com uma distribuição de pontos de forma não-linear pelas
+posições;
+• Multiplicadores e Combos: Mecanismos para recompensar a consistência e o empenho
+contínuo;
+• Objetivos Comunitários: Permite que toda a comunidade trabalhe para uma meta global;
+• Sistema de Múltiplas Moedas: Cria diferentes caminhos para o reconhecimento.
+Posto isto, a equipa optou por trabalhar em conjunto (“Swarm”) no problema central: a
+atribuição dos pontos. Esta foi considerada a questão mais sensível e crítica identificada no
+Dia 1, com o objetivo de construir alicerces sólidos antes de desenvolver mecânicas mais
+complexas. Assim foram desenhados 4 soluções (sketches) de 4 elementos da equipa. É
+destas soluções que o dia 3 vai começar.
+
+2. Converge
+2.1. A equipa
+A equipa do Day 3 manteve a composição do Day 1, com a exceção da troca do Gonçalo
+Azevedo pelo Filipe Vaz (FV), por motivos de disponibilidade.
+
+2.2. “Art Museum”
+Tal como proposto por Knapp [1], o Day 3 começou pela exposição dos 4 sketches tipo
+galeria de museu. E apesar da política anti-tecnologia defendida por Knapp, foi utilizado
+Miro, uma plataforma online de quadro branco colaborativo que permite às equipas
+visualizar, planear e trabalhar em conjunto em tempo real, de qualquer lugar. Facto nunca
+ainda mencionado, mas por uma questão de disponibilidade da equipa, as reuniões
+decorrem sempre por Discord, o que torna a utilização de Miro uma solução bastante
+adequada. Assim foi pedido a todos os membros para analisar os 4 sketches desenvolvidos,
+representados a seguir:
+
+2
+
+Hacker League /
+
+Day 3
+
+2.3. “Heat Map”
+A seguir, foi pedido à equipa que distribuisse votos (pontos rosa) em torno das ideias que
+cada membro gostava mais em cada sketch, fazendo assim um mapa de calor. Para além
+disso, caso surgisse alguma dúvida ou ideia, deviam escrevê-la num post-it amarelo por
+baixo do sketch. O resultado desta fase é apresentado a seguir:
+
+2.4. “Speed Critique”
+Após a votação inicial, cada sketch foi analisado rapidamente com moderação do Facilitator,
+o autor, e os principais pontos foram apontados pelo escriba nomeado, Filipe Vaz. Os autores
+de cada sketch só podiam falar nos segundos finais, como proposto por Knapp.
+Assim a Speed Critique desenrolou-se da seguinte forma para cada sketch:
+3
+
+Hacker League /
+
+Day 3
+
+2.4.1. “Leaderboard detalhístico”
+O Facilitador notou que o sketch mostrava uma “leaderboard das equipas” na página
+principal, uma “lista de atividades” e uma “vista de detalhes por equipa”. O FV gostou do
+facto de poder ver logo a pontuação da equipa de forma direta, considerando que isso
+poderia “dar motivação”. Houve concordância sobre a utilidade de ver as várias atividades
+que atribuíram pontos. No entanto, foi expressada dúvida sobre a frequência com que se
+visitaria a tab de atividades, sugerindo que seria algo mais ocasional. Foi também levantada a
+questão se as atividades eram por equipa ou por pessoa. O Facilitador esclareceu que parecia
+poderem ser ambas.
+Pronunciamento do Autor (André Caseiro): No final do tempo, André Caseiro referiu que
+“já foi tudo dito”, indicando que as principais ideias e dúvidas da equipa estavam alinhadas
+com o que pretendia. Ele confirmou que a ideia era permitir ver as pontuações tanto por
+equipa como por evento.
+2.4.2. “Give & Gain”
+O Facilitador notou que o sketch incluía a ideia da “direção reunir para distribuir pontos” para
+tudo o que não fossem projetos. Além disso, havia “updates de cada projeto durante o mês”,
+um “perfil” (com histórico de pontos) e a possibilidade de “reclamar”. Este sketch foi referido
+como “bastante heated”. O FV considerou a ideia interessante, mas questionou a
+complexidade de implementação. Ele gostou da ideia de ter “updates dos outros projetos”
+por curiosidade.
+Pronunciamento do Autor (André Santos): O André Santos esclareceu que a ideia de perfil
+era por pessoa, e não por equipa, e que os pontos seriam atribuídos após as apresentações
+na HackNight, não ao longo do mês. A ideia era que fosse uma “mini comunidade” onde as
+pessoas pudessem ver os updates dos projetos.
+2.4.3. “Extra Steps Communism”
+O Facilitador descreveu os pontos principais: todas as tarefas concluídas (marcadas como
+“done”) ganham uma quantidade fixa de pontos (50 PCCs); pontos extra podiam ser dados
+na fase do HackerPitch para compensar trabalho adicional, e a ideia de dividir a leaderboard
+em múltiplos painéis secundários (ex: Hall of Fame, “Pitch do Mês”) foi destacada como
+“bastante quente”. O Facilitador explicou a distinção entre “Pontos de Jornada” (PJ), ganhos
+na HackNight, e “Pontos de Contribuição Comunitária” (PCC), ganhos ao longo do mês por
+tarefas gerais. A ideia da “instant gratification” (receber pontos imediatamente ao clicar
+“done”) foi sublinhada.
+Pronunciamento do Autor (Armando Gonçalves): O próprio Facilitador era o autor e
+explicou os conceitos com bastante clareza durante a apresentação.
+2.4.4. “Seasonal Leaderboard”
+O sketch apresentava a distinção entre “Competitive Points” e “Community Points”, a
+introdução de “Seasons”, e elementos como “Team vs Team, votes, impostors”. Também
+incluía a ideia de “leaderboard com títulos honorários” e “criativity points”, visando a
+inclusividade. Este sketch também foi considerado “bastante quente”. Foi destacado o valor
+das seasons para evitar que jogadores fiquem para trás, especialmente para recrutas que
+entram mais tarde, embora implicasse mais trabalho para a organização. Foi consensual ter
+uma leaderboard de equipas e uma individual, e a ideia de títulos honorários para reconhecer
+o maior número de pessoas.
+4
+
+Hacker League /
+
+Day 3
+
+Pronunciamento do Autor (Filipe Vaz): FV explicou que a ideia das seasons era para dar
+um “refresher” e evitar que as pessoas se perdessem a meio do ano, dada a vida pessoal dos
+membros. Ele concordou com a ideia de multiplicadores para HackNights posteriores como
+forma de “catch-up”. Gonçalo Fecha (o Decider) perguntou se os prémios seriam consoante a
+season, o que o autor não tinha pensado, mas considerou possível.
+Os principais pontos anotados pelo escriba foram registados em post-its verdes, ao lado da
+parte superior de cada sketch:
+
+5
+
+Hacker League /
+
+Day 3
+
+2.5. “Straw Poll”
+Após a speed critique e todos estarem confortáveis com as ideias de cada sketch, foi
+realizada uma votação (“Straw Poll”) com pontos verde. Cada membro, à exceção do Decider,
+votou num dos 4 sketches:
+
+De seguida, cada votante apresentou o seu argumento para a sua respetiva votação durante
+o straw poll:
+2.5.1. André Santos
+Votou no sketch “Extra Steps Communism”.
+Argumentou que a atribuição de pontos faz sentido na HackNight se os departamentos
+apresentarem o que fizeram. Gostou da ideia de que toda a gente pode votar, em vez de ser
+só a direção, o que evita reclamações. Também gostou da ideia do FV, neste ponto já tomada
+como certa por todos, de ter duas leaderboards (uma de equipas e uma individual) e de fazer
+seasons. Acredita que as seasons podem ser interessantes porque recrutas que entram mais
+tarde não ficariam muito para trás, permitindo uma season no início e outra no final.
+2.5.2. André Caseiro
+Votou na “Seasonal Leaderboard”.
+O que mais gostou foi a existência de seasons e ter mais do que uma leaderboard.
+2.5.3. Armando Gonçalves
+Votou na “Seasonal Leaderboard”.
+O voto foi condicional, pois gostou muito da ideia das seasons. Assim a ideia seria misturar o
+conceito de que cada tarefa recebe uma quantidade fixa de pontos, e só depois na
+HackNight é que a distribuição de pontos é decidida, aplicando esta lógica às seasons. ◦
+2.5.4. Filipe Vaz
+Votou no “Give and Gain”.
+
+6
+
+Hacker League /
+
+Day 3
+
+Apesar de gostar de aspetos de todos os sistemas, incluindo o seu próprio (as seasons),
+achou “piada” à ideia do Billy de ter uma espécie de rede social/comunidade onde as pessoas
+podem dar updates. Acredita que isto ajuda a não tornar o sistema demasiado competitivo,
+relembrando que o objetivo é recompensar o esforço das pessoas e não colocá-las umas
+contra as outras. Reconheceu que a ideia do Billy sobre a “Hacker reunião” tem o problema
+do BIAS, mas que isso poderia ser resolvido com o sistema do Armando. Também valoriza ter
+um registo do que foi atribuído a cada pessoa.
+Depois de todos se pronunciarem, era agora a vez do Decider tomar a palavra final.
+
+2.6. Vencedores
+Assim, com base nos argumentos colocados em cima da mesa, o Decider colocou os seus
+pontos finais nos sketches, de cor azul, que ditariam os vencedores:
+
+Para o Decider, os vencedores seriam o “Extra Steps Communism” e o “Seasonal
+Leaderboard”, mas por motivos logísticos de ter apenas 3 votos e não poder dividir o último
+voto entre os dois, decidiu colocar o último voto no “Seasonal Leaderboard”, para dar ênfase
+à implementação do sistema de seasons. Assim, foi decidido que o “Seasonal Leaderboard”
+seria usado como base, mas incorporando elementos dos outros sketches:
+• Sistema de Seasons
+• Filosofia de pontuação do “Extra Steps Communism”
+• Ideia de comunidade/updates do “Give and Gain”
+• Múltiplas leaderboards (individual + equipas)
+• Integração com Vikunja para automatização de tarefas
+Assim todos estes pontos servirão para construir o protótipo final, seguido pela
+implementação das funcionalidades selecionadas e, finalmente, um teste durante a próxima
+HackNight.
+
+7
+
+Hacker League /
+
+Day 3
+
+"Winners" e "Maybe Laters" do Day 3
+Antes de dar estes passos decisivos, é fundamental definir o Storyboard do jogo. Esta etapa é
+crucial pois evita problemas na prototipagem ao eliminar incertezas e permitir que a equipa
+visualize o protótipo final antes da construção. O storyboard garante clareza suficiente para
+que ninguém precise de se perguntar “o que acontece a seguir?” [1] durante a prototipagem,
+foca nas soluções mais importantes sem inventar novas ideias, e completa a fase de decisão
+mais difícil do sprint.
+
+3. Storyboard
+3.1. “Player Flow”
+Antes de passar à criação do Storyboard propriamente dito, cada membro da equipa foi
+convidado a escrever individualmente 6 passos de ação (“Player Flow”) numa sticky note.
+Começando por definir os passos de ação iniciais e finais, o intuito foi agilizar a etapa de criar
+o Storyboard mais tarde. De seguida, os membros da equipa apresentaram os seus passos,
+um a um, lendo-os em voz alta, com o Decider a apresentar por último. Após as
+apresentações, cada membro da equipa votou na linha de passos que considerou mais
+promissora, sendo que cada membro teve direito a um ponto de votação, enquanto o
+Decider teve dois. A linha vencedora foi então assinalada, servindo como base para o
+storyboard, embora passos de outras linhas pudessem ser incorporados.
+
+8
+
+Hacker League /
+
+Day 3
+
+Player Flow Vencedor:
+1. registar na plataforma, mudar nome, equipa, info, …
+2. ver leaderboard e desafio da próxima hacknight
+3. fazer tarefa no vikunja e ganhar pontos
+4. fazer desafio da hacknight + missão xb
+5. votar
+6. ganhar pontos
+
+3.2. Resultado e comentários finais
+Segue desta feita a imagem final do Storyboard:
+
+9
+
+Hacker League /
+
+Day 3
+
+Uma coisa que o leitor mais atento pode notar é que a ordem do Storyboard não segue
+segue escrupulosamente a ordem anunciada no Player Flow vencedor (1 ↔ 2). De facto, à
+medida que a discussão avançava, foi decidido que fazia mais sentido a interface principal ser
+a leaderboard, isto é, quando o membro abre a WebApp da Hacker League, a primeira coisa
+que deve ver são os pontos das equipas. Por outro lado, o desafio da próxima HackNight
+passou a ter uma página separada só para si: “HackNight”, onde os membros podem ver o
+desafio e toda a informação da próxima HackNight, mas também se quiserem, com um drop
+down menu, podem escolher uma HackNight passada e ver informação em relação a essa,
+numa página a seu tempo devidamente atualizada pelo HackerMaster.
+Outra coisa a notar é que, estando a falar de um protótipo, o grau de complexidade do
+desenvolvimento nunca será elevado. Estará certamente nos planos futuros implementar a
+feature tipo comunidade/rede social proposta pelo sketch “Give and Gain”, mas para o
+momento, a funcionalidade do “Histórico” foi considerada suficiente, por mostrar a mesma
+informação, simplesmente de forma menos atraente. Na verdade, este argumento pode ser
+aplicada a outras features que foram faladas durante o Sprint; com o tempo e maior adesão
+ao jogo, a equipa poderá decidir se há a necessidade e o interesse na implementação de
+algumas delas. Uma dessas features é estatísticas do jogador, presentes no perfil de cada
+membro, que possa mostrar gráficos temporais de pontos PCC e PJ ganhos ao longo do
+tempo, permitindo visualizar tendências de participação e progresso. Estas estatísticas
+poderiam incluir métricas como: número total de tarefas completadas por mês, evolução da
+pontuação ao longo das seasons, comparação com outros membros da equipa, badges de
+conquistas baseadas em marcos específicos (ex: “Primeira HackNight”, “10 tarefas
+consecutivas”, “MVP da Season”), e até mesmo previsões de pontuação baseadas no histórico
+de atividade. Esta funcionalidade não só motivaria a participação contínua, mas também
+forneceria insights valiosos sobre os padrões de contribuição da comunidade.
+Ter a leaderboard partilhada para o Discord com um bot também é algo que está em cima da
+mesa, bem como um canal com a atualização do Histórico de pontos in real time. Esta última
+funcionalidade é considerada mais crítica, devido à grande utilização do server do Discord
+por parte da comunidade da HackerSchool.
+
+10
+
+Hacker League /
+
+Day 3
+
+Um detalhe que não está no storyboard, pela limitação de quadros, mas importante ser
+referido é que decidiu-se que nesta primeira fase de implementação, as votações durante o
+HackerPitch e o HackerChallenge vão ser feitas com recurso a plataformas externas, tipo
+Google Forms/Microsoft Forms, e inseridas manualmente no sistema (penúltimo quadro)
+pelo HackerMaster.
+O Day 3 culminou na definição clara e concreta do plano para o protótipo. As decisões
+cruciais foram tomadas, eliminando a incerteza e preparando a equipa para a fase de
+prototipagem no dia seguinte. Este planeamento exaustivo será certamente essencial para
+evitar problemas e garantir a eficiência na construção do protótipo, que ocupará o próximo
+mês a equipa de desenvolvimento: o André Caseiro, o André Santos e o Armando Gonçalves.
+O trabalho no Miro, juntamente com as votações, comentários da equipa e storyboard final
+pode ser consultado no link seguinte.
+
+Bibliography
+[1] J. Knapp, Sprint. Bantam Press, 2016.
+
+11
+
+
