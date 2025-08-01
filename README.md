@@ -2,6 +2,10 @@
 
 Welcome to **User Management Web Application** – a simple and scalable solution for managing users, profiles, and projects. This project features a modular and modern design to meet the demands of dynamic applications.
 
+## 📜 Project History
+
+This project was originally named **"HS-WebApp"** and was developed by José Lopes ([@MIBismuth](https://github.com/MIBismuth) on GitHub). It served as the first stone in building the **Hacker League** ecosystem. The original project has been preserved in this legacy branch, while active development continues on the main branch.
+
 ---
 
 ## ✅ **Current Features**
