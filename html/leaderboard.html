@@ -15,7 +15,8 @@
                 <img class="logo" src="/static/images/HS_NOVO.svg" alt="HS Dashboard">
             </div>
             <div class="navbar-links">
-                <a href="/">Profile</a>
+                <a href="/profile">Profile</a>
+                <a href="/history">History</a>
                 <a href="/members">Members</a>
                 <a href="/logout">Logout</a>
             </div>
@@ -26,8 +27,9 @@
                     <span></span>
                 </div>
                 <div class="hamburger-content">
-                    <a href="/">Profile</a>
+                    <a href="/profile">Profile</a>
                     <a href="/leaderboard">Leaderboard</a>
+                    <a href="/history">History</a>
                     <a href="/members">Members</a>
                     <a href="/logout">Logout</a>
                 </div>
@@ -39,25 +41,6 @@
                 <h1>🏆 Hacker League Leaderboard</h1>
                 <p>Track your progress and compete with the best hackers!</p>
             </header>
-
-            <div class="leaderboard-controls">
-                <div class="control-group">
-                    <label for="classificationType">Classification Type:</label>
-                    <select id="classificationType" class="control-select">
-                        <option value="team">Team Classification</option>
-                        <option value="individual">Individual Classification</option>
-                    </select>
-                </div>
-
-                <div class="control-group">
-                    <label for="pointsType">Points Type:</label>
-                    <select id="pointsType" class="control-select">
-                        <option value="total">Total Points</option>
-                        <option value="pj">PJ Points</option>
-                        <option value="pcc">PCC Points</option>
-                    </select>
-                </div>
-            </div>
 
             <div class="leaderboard-content">
                 <div id="leaderboardTable" class="leaderboard-table">
@@ -81,32 +64,9 @@
             </div>
         </div>
 
-        <script>
-            // Leaderboard data (simulated database)
-            const leaderboardData = {
-                teams: [
-                    { name: "Cyber Warriors", totalPoints: 2850, pjPoints: 1200, pccPoints: 1650, members: 4 },
-                    { name: "Code Breakers", totalPoints: 2720, pjPoints: 1100, pccPoints: 1620, members: 3 },
-                    { name: "Digital Ninjas", totalPoints: 2580, pjPoints: 1050, pccPoints: 1530, members: 5 },
-                    { name: "Hack Masters", totalPoints: 2450, pjPoints: 980, pccPoints: 1470, members: 4 },
-                    { name: "Security Squad", totalPoints: 2320, pjPoints: 920, pccPoints: 1400, members: 3 },
-                    { name: "Byte Force", totalPoints: 2180, pjPoints: 880, pccPoints: 1300, members: 4 },
-                    { name: "Crypto Kings", totalPoints: 2050, pjPoints: 820, pccPoints: 1230, members: 3 },
-                    { name: "Network Knights", totalPoints: 1920, pjPoints: 780, pccPoints: 1140, members: 4 }
-                ],
-                individuals: [
-                    { name: "Alex Chen", team: "Cyber Warriors", totalPoints: 850, pjPoints: 350, pccPoints: 500 },
-                    { name: "Maria Santos", team: "Code Breakers", totalPoints: 820, pjPoints: 330, pccPoints: 490 },
-                    { name: "David Kim", team: "Digital Ninjas", totalPoints: 780, pjPoints: 310, pccPoints: 470 },
-                    { name: "Sarah Johnson", team: "Hack Masters", totalPoints: 750, pjPoints: 300, pccPoints: 450 },
-                    { name: "Carlos Rodriguez", team: "Security Squad", totalPoints: 720, pjPoints: 290, pccPoints: 430 },
-                    { name: "Emma Wilson", team: "Byte Force", totalPoints: 690, pjPoints: 280, pccPoints: 410 },
-                    { name: "James Lee", team: "Crypto Kings", totalPoints: 660, pjPoints: 270, pccPoints: 390 },
-                    { name: "Ana Silva", team: "Network Knights", totalPoints: 630, pjPoints: 260, pccPoints: 370 },
-                    { name: "Michael Brown", team: "Cyber Warriors", totalPoints: 600, pjPoints: 250, pccPoints: 350 },
-                    { name: "Lisa Garcia", team: "Code Breakers", totalPoints: 570, pjPoints: 240, pccPoints: 330 }
-                ]
-            };
+        <script type="module">
+            // Import the leaderboard service
+            import { getTeams, getIndividuals, getLeaderboardStats, getTeamHistory } from '/js/services/leaderboardService.js';
 
             // Initialize leaderboard
             document.addEventListener('DOMContentLoaded', function() {
@@ -121,22 +81,12 @@
             }
 
             function setupEventListeners() {
-                document.getElementById('classificationType').addEventListener('change', function() {
-                    const classificationType = this.value;
-                    const pointsType = document.getElementById('pointsType').value;
-                    renderLeaderboard(classificationType, pointsType);
-                });
-
-                document.getElementById('pointsType').addEventListener('change', function() {
-                    const classificationType = document.getElementById('classificationType').value;
-                    const pointsType = this.value;
-                    renderLeaderboard(classificationType, pointsType);
-                });
+                // Event listeners will be set up in renderLeaderboard
             }
 
-            function renderLeaderboard(classificationType, pointsType) {
+            async function renderLeaderboard(classificationType, pointsType) {
                 const tableContainer = document.getElementById('leaderboardTable');
-                const data = classificationType === 'team' ? leaderboardData.teams : leaderboardData.individuals;
+                const data = classificationType === 'team' ? await getTeams() : await getIndividuals();
                 
                 // Sort data based on points type
                 const sortedData = [...data].sort((a, b) => {
@@ -151,10 +101,27 @@
                     <table class="leaderboard-table">
                         <thead>
                             <tr>
-                                <th>Rank</th>
-                                <th>${classificationType === 'team' ? 'Team' : 'Name'}</th>
+                                <th>
+                                    <div class="header-controls">
+                                        <span>Rank</span>
+                                        <select id="pointsType" class="inline-select">
+                                            <option value="total" ${pointsType === 'total' ? 'selected' : ''}>Total</option>
+                                            <option value="pj" ${pointsType === 'pj' ? 'selected' : ''}>PJ</option>
+                                            <option value="pcc" ${pointsType === 'pcc' ? 'selected' : ''}>PCC</option>
+                                        </select>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="header-controls">
+                                        <span>${classificationType === 'team' ? 'Team' : 'Name'}</span>
+                                        <select id="classificationType" class="inline-select">
+                                            <option value="team" ${classificationType === 'team' ? 'selected' : ''}>Teams</option>
+                                            <option value="individual" ${classificationType === 'individual' ? 'selected' : ''}>Individuals</option>
+                                        </select>
+                                    </div>
+                                </th>
                                 ${classificationType === 'individual' ? '<th>Team</th>' : '<th>Members</th>'}
-                                <th>${pointsType.charAt(0).toUpperCase() + pointsType.slice(1)} Points</th>
+                                <th>Total Points</th>
                                 <th>PJ Points</th>
                                 <th>PCC Points</th>
                             </tr>
@@ -164,17 +131,13 @@
 
                 sortedData.forEach((item, index) => {
                     const rank = index + 1;
-                    const points = pointsType === 'total' ? item.totalPoints : 
-                                 pointsType === 'pj' ? item.pjPoints : item.pccPoints;
                     
-                    const rankClass = rank <= 3 ? `rank-${rank}` : '';
-                    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+                    const rankClass = rank <= 5 ? `rank-${rank}` : '';
 
                     tableHTML += `
-                        <tr class="${rankClass}">
+                        <tr class="${rankClass} clickable-row" data-team="${item.name}">
                             <td class="rank-cell">
                                 <span class="rank-number">${rank}</span>
-                                ${medal}
                             </td>
                             <td class="name-cell">${item.name}</td>
                             ${classificationType === 'individual' ? 
@@ -185,6 +148,21 @@
                             <td class="pj-points">${item.pjPoints}</td>
                             <td class="pcc-points">${item.pccPoints}</td>
                         </tr>
+                        <tr class="history-row" id="history-${item.name.replace(/\s+/g, '-')}" style="display: none;">
+                            <td colspan="6" class="history-cell">
+                                <div class="history-content">
+                                    <h4>📊 Recent Activity</h4>
+                                    <div class="history-list" id="history-list-${item.name.replace(/\s+/g, '-')}">
+                                        <div class="loading">Loading history...</div>
+                                    </div>
+                                    <div class="history-footer">
+                                        <button class="see-more-btn" onclick="window.location.href='/history'">
+                                            See more...
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     `;
                 });
 
@@ -194,16 +172,104 @@
                 `;
 
                 tableContainer.innerHTML = tableHTML;
+                
+                // Set up event listeners for the inline dropdowns
+                setupInlineDropdowns();
+                
+                // Add click event listeners for history dropdown
+                setupHistoryDropdowns();
             }
 
-            function updateStats() {
-                const totalParticipants = leaderboardData.individuals.length;
-                const activeTeams = leaderboardData.teams.length;
-                const totalPoints = leaderboardData.teams.reduce((sum, team) => sum + team.totalPoints, 0);
+            function setupInlineDropdowns() {
+                // Classification type dropdown
+                const classificationSelect = document.getElementById('classificationType');
+                if (classificationSelect) {
+                    classificationSelect.addEventListener('change', function() {
+                        const classificationType = this.value;
+                        const pointsType = document.getElementById('pointsType').value;
+                        renderLeaderboard(classificationType, pointsType);
+                    });
+                }
 
-                document.getElementById('totalParticipants').textContent = totalParticipants;
-                document.getElementById('activeTeams').textContent = activeTeams;
-                document.getElementById('totalPoints').textContent = totalPoints.toLocaleString();
+                // Points type dropdown
+                const pointsSelect = document.getElementById('pointsType');
+                if (pointsSelect) {
+                    pointsSelect.addEventListener('change', function() {
+                        const classificationType = document.getElementById('classificationType').value;
+                        const pointsType = this.value;
+                        renderLeaderboard(classificationType, pointsType);
+                    });
+                }
+            }
+
+            function setupHistoryDropdowns() {
+                const clickableRows = document.querySelectorAll('.clickable-row');
+                
+                clickableRows.forEach(row => {
+                    row.addEventListener('click', async function() {
+                        const teamName = this.getAttribute('data-team');
+                        const historyRow = document.getElementById(`history-${teamName.replace(/\s+/g, '-')}`);
+                        const historyList = document.getElementById(`history-list-${teamName.replace(/\s+/g, '-')}`);
+                        
+                        // Toggle history row
+                        if (historyRow.style.display === 'none') {
+                            historyRow.style.display = 'table-row';
+                            
+                            // Load history data from service
+                            try {
+                                const history = await getTeamHistory(teamName);
+                                renderHistory(historyList, history);
+                            } catch (error) {
+                                historyList.innerHTML = '<div class="error">Failed to load history</div>';
+                            }
+                        } else {
+                            historyRow.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            function renderHistory(container, history) {
+                if (history.length === 0) {
+                    container.innerHTML = '<div class="no-history">No recent activity</div>';
+                    return;
+                }
+
+                const historyHTML = history.map(entry => `
+                    <div class="history-entry">
+                        <div class="history-entry-header">
+                            <span class="history-member">${entry.membro}</span>
+                            <span class="history-date">${formatDate(entry.data)}</span>
+                        </div>
+                        <div class="history-description">${entry.descrição}</div>
+                        <div class="history-points">
+                            <span class="points-type ${entry.tipo.toLowerCase()}">${entry.tipo}</span>
+                            <span class="points-value">+${entry.pontos} pts</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                container.innerHTML = historyHTML;
+            }
+
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+
+            async function updateStats() {
+                try {
+                    const stats = await getLeaderboardStats();
+                    document.getElementById('totalParticipants').textContent = stats.totalParticipants;
+                    document.getElementById('activeTeams').textContent = stats.activeTeams;
+                    document.getElementById('totalPoints').textContent = stats.totalPoints.toLocaleString();
+                } catch (error) {
+                    console.error('Error loading stats:', error);
+                }
             }
 
             function setupHamburgerMenu() {
@@ -221,6 +287,8 @@
                     });
                 }
             }
+
+
         </script>
     </body>
 </html> 

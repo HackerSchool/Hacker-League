@@ -16,10 +16,14 @@ import { populateAdminFormWithUserData } from "/js/modules/admin.js";
 
 // Main page handler (/)
 async function handleMainPage() {
-    await handleLoginRedirect();
-    displayUserRole();
-    showMembers();
-    setupHamburgerMenu();
+    const isLoggedIn = await checkLogin();
+    if (!isLoggedIn) {
+        window.location.href = '/login';
+        return;
+    }
+    
+    // Redirect to leaderboard as the landing page
+    window.location.href = '/leaderboard';
 }
 
 async function showMembers() {
@@ -289,9 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pathname === '/') {
         handleMainPage();
-        handleProfilePage();
-        handleUserProfile();
-        handleAdminPanel();
     } else if (pathname === '/login') {
         handleLoginPage();
     } else if (pathname === '/logout') {
@@ -301,6 +302,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (pathname === '/leaderboard') {
         // Leaderboard page is handled by its own script
         setupHamburgerMenu();
+    } else if (pathname === '/profile') {
+        // Profile page handling
+        handleProfilePage();
+        handleUserProfile();
+        handleAdminPanel();
+        showMembers();
     }
 });
 

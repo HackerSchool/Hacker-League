@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile - Hacker League</title>
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/navbar.css">
+        <script type="module" src="js/app.js" defer></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img class="logo" src="/static/images/HS_NOVO.svg" alt="HS Dashboard">
+            </div>
+            <div class="navbar-links">
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/history">History</a>
+                <a href="/members">Members</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="hamburger-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/leaderboard">Leaderboard</a>
+                    <a href="/history">History</a>
+                    <a href="/members">Members</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1>Welcome to the HS Dashboard</h1>
+
+        <div id="userRoles">Loading roles...</div>
+
+        <!-- Display the current logo -->
+        <img id="memberLogo" src="" alt="Member Logo">
+
+        <!-- Form to upload new member logo -->
+        <form id="uploadLogoForm">
+            <label for="logoUpload">Upload New Logo:</label>
+            <input type="file" id="logoUpload" name="logoUpload">
+            <button type="submit">Upload</button>
+        </form>
+
+        <!-- Form to edit user info -->
+        <form id="editForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" disabled>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" disabled>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" disabled>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" disabled></textarea>
+
+            <button type="button" id="editButton">Edit</button>
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <p id="message"></p>
+
+        <div id="members">
+            <!-- Member details will be displayed here -->
+        </div>
+
+        <div class="links">
+            <a href="/logout">Logout</a>
+            <a href="/login">Login</a>
+        </div>
+        <div id="adminPanel">
+            <h2>Admin Panel</h2>
+
+            <!-- Admin panel: User search and edit/create form -->
+            <!-- Action Buttons -->
+            <button id="createUserButton">Create New User</button>
+            <button id="updateUserButton">Update Existing User</button>
+            <input type="text" id="searchUsername" placeholder="Enter username to search" />
+            <button id="searchButton">Search</button>
+            <!-- User form -->
+            <form id="userForm" style="display: none;">
+                <label for="name">Name:</label>
+                <input type="text" id="admin-name" name="name" />
+
+                <label for="email">Email:</label>
+                <input type="email" id="admin-email" name="email" />
+
+                <label for="course">Course:</label>
+                <input type="text" id="admin-course" name="course" />
+
+                <label for="istId">IST ID:</label>
+                <input type="text" id="admin-istId" name="ist_id" />
+
+                <label for="description">Description:</label>
+                <textarea id="admin-description" name="description"></textarea>
+
+                <label for="exitDate">Exit Date:</label>
+                <input type="date" id="admin-exitDate" name="exit_date" />
+
+                <label for="extra">Extra:</label>
+                <input type="text" id="admin-extra" name="extra" />
+
+                <label for="joinDate">Join Date:</label>
+                <input type="date" id="admin-joinDate" name="join_date" />
+
+                <label for="memberNumber">Member Number:</label>
+                <input type="number" id="admin-memberNumber" name="member_number" />
+
+                <label for="roles">Roles:</label>
+                <input type="text" id="admin-roles" name="roles" />
+
+                <label for="username">Username:</label>
+                <input type="text" id="admin-username" name="username" />
+
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+        </div>
+    </body>
+</html> 
