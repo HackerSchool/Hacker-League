@@ -20,27 +20,27 @@ The system focuses on **recognizing members who already contribute actively** to
 ## ✅ **Current Features**
 
 ### 🏠 **Landing Page (Leaderboard)**
-[x] **Interactive Leaderboard** with team and individual classifications
-[x] **Multiple Point Types**: Total, PJ (Journey Points), and PCC (Community Contribution Points)
-[x] **Dynamic Controls**: Dropdown menus for classification type and point filtering
-[x] **Medal System**: 🥇🥈🥉 for top 5 positions with animations
-[x] **Statistics Dashboard**: Total participants, active teams, and total points
+- [x] **Interactive Leaderboard** with team and individual classifications
+- [x] **Multiple Point Types**: Total, PJ (Journey Points), and PCC (Community Contribution Points)
+- [x] **Dynamic Controls**: Dropdown menus for classification type and point filtering
+- [x] **Medal System**: 🥇🥈🥉 for top 5 positions with animations
+- [x] **Statistics Dashboard**: Total participants, active teams, and total points
 
 ### 👤 **User Profile System**
-[] **Personal Profile Management**: Edit user information, upload logos
-[] **Admin Panel**: User creation, modification, and deletion capabilities
-[] **Role-based Access**: Different permissions for admins and regular users
-[] **Member Directory**: View all HackerSchool members and their details
+- [ ] **Personal Profile Management**: Edit user information, upload logos
+- [ ] **Admin Panel**: User creation, modification, and deletion capabilities
+- [ ] **Role-based Access**: Different permissions for admins and regular users
+- [ ] **Member Directory**: View all HackerSchool members and their details
 
 ### 🔐 **Authentication System**
-[x] **Secure Login/Logout**: Cookie and local storage support
-[x] **Test Credentials**: Available for development testing
-[x] **Session Management**: Persistent login state
-[] **Role Management**: Admin and user roles with appropriate permissions
+- [x] **Secure Login/Logout**: Cookie and local storage support
+- [x] **Test Credentials**: Available for development testing
+- [x] **Session Management**: Persistent login state
+- [ ] **Role Management**: Admin and user roles with appropriate permissions
 
 ### 📱 **Navigation & UX**
-[] **Hamburger Menu**: Mobile-responsive navigation
-[x] **Cross-platform**: Works on desktop, tablet, and mobile devices
+- [ ] **Hamburger Menu**: Mobile-responsive navigation
+- [x] **Cross-platform**: Works on desktop, tablet, and mobile devices
 
 
 ---
