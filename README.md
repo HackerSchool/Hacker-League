@@ -2,20 +2,19 @@
 
 Welcome to **Hacker League** – a task-gamification system designed to recognize and reward the best contributors of HackerSchool through a structured competitive framework.
 
+
+
 ---
+
 
 ## 📜 Project History
 
 This project was originally named **"HS-WebApp"** and was developed by José Lopes ([@MIBismuth](https://github.com/MIBismuth) on GitHub). It served as the first stone in building the **Hacker League** ecosystem. The original project has been preserved in the legacy branch, while active development continues on the main branch.
 
----
 
-## 🎯 Vision & Concept
-
-### Core Philosophy
-The system focuses on **recognizing members who already contribute actively** to HackerSchool. Each point awarded must have clear justification and be intrinsically linked to HackerSchool values.
 
 ---
+
 
 ## ✅ **Current Features**
 
@@ -43,7 +42,9 @@ The system focuses on **recognizing members who already contribute actively** to
 - [x] **Cross-platform**: Works on desktop, tablet, and mobile devices
 
 
+
 ---
+
 
 ## 🛠️ **Technical Architecture**
 
@@ -70,7 +71,9 @@ PUT /api/projects/<nome>   # Update project
 DELETE /api/projects/<nome> # Delete project
 ```
 
+
 ---
+
 
 ## 🚀 **Setup Instructions**
 
@@ -108,7 +111,9 @@ Install [air](https://github.com/air-verse/air) for automatic reloading:
 air
 ```
 
+
 ---
+
 
 ## 🤝 **Contributing**
 
@@ -116,14 +121,17 @@ air
 
 - **Decider**: Gonçalo Fecha
 - **Developers**: André Caseiro, André Santos, Armando Gonçalves, Gonçalo Azevedo
-- **Technical Expert**: José Lopes
+- **Technical Expert**: José Lopes, Filipe Piçarra
 - **Game Design**: João Rodrigues, Filipe Vaz
 
 ### **Development Guidelines**
 
-Update README and technical documentation
+Pls Pls Pls remember to update README and rest of documentation, if existing.
+
 
 ---
+
+
 
 ## 📚 **Bibliography & References**
 
@@ -138,12 +146,12 @@ Update README and technical documentation
 - **Fortnite**: Seasonal content and engagement
 - **Triple Agent**: Social deduction mechanics
 
+
+
 ---
 
 ## 📄 **License**
 
 This project is licensed under the MIT License. Feel free to fork, modify, and share your improvements!
-
----
  
 
