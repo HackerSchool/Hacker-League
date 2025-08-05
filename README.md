@@ -6,7 +6,10 @@ Welcome to **Hacker League** – a task-gamification system designed to recogniz
 
 ## 📜 Project History
 
-This project was originally named **"HS-WebApp"** and was developed by José Lopes ([@MIBismuth](https://github.com/MIBismuth) on GitHub). It served as the first stone in building the **Hacker League** ecosystem. The project has been successfully migrated from vanilla JavaScript to React for improved maintainability and user experience.
+This noble project, first wrought by the esteemed craftsman José Lopes (known throughout the realm as [@MIBismuth](https://github.com/MIBismuth)), was christened in days of yore as **"HS-WebApp"** and didst flourish under his skilled hand (consult ye the ancient scrolls preserved in the [legacy](https://github.com/HackerSchool/Hacker-League/tree/legacy) branch for proof of these bygone times).
+
+Verily, this humble creation served as the cornerstone most foundational in the construction of the grand Hacker League project. Through great toil and scholarly pursuit, the project hath been most triumphantly transmuted from the primitive tongue of **vanilla JavaScript** unto the more refined and courtly language of **React**, thereby achieving superior maintainability and providing a most pleasant experience for all who venture forth to use it.
+
 
 ---
 
