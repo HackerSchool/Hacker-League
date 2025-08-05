@@ -1,0 +1,86 @@
+/* Update the column width definitions in your CSS */
+
+.leaderboard-table th:first-child {
+    text-align: center;
+    width: 12%;
+}
+
+.leaderboard-table th:nth-child(2) {
+    width: 25%;
+}
+
+.leaderboard-table th:nth-child(3) {
+    width: 16%; /* Total Points column - now 3rd */
+    text-align: center;
+}
+
+.leaderboard-table th:nth-child(4) {
+    width: 15%; /* Members/Team column - now 4th */
+    text-align: center;
+}
+
+.leaderboard-table th:nth-child(5),
+.leaderboard-table th:nth-child(6) {
+    width: 16%;
+    text-align: center;
+}
+
+/* Update responsive breakpoints */
+@media (max-width: 1200px) {
+    .leaderboard-table th {
+        font-size: 12px;
+        padding: 10px 6px;
+        letter-spacing: 0.5px;
+    }
+    
+    .leaderboard-table th:nth-child(5),
+    .leaderboard-table th:nth-child(6) {
+        width: 10%;
+    }
+    .leaderboard-table th:first-child {
+        width: 20%;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 660px) {
+    /* Hide PJ and PCC columns on mobile */
+    .leaderboard-table th:nth-child(5),
+    .leaderboard-table th:nth-child(6),
+    .leaderboard-table td:nth-child(5),
+    .leaderboard-table td:nth-child(6) {
+        display: none;
+    }
+    
+    /* Better mobile column distribution */
+    .leaderboard-table th:first-child {
+        width: 20%;
+    }
+    
+    .leaderboard-table th:nth-child(2) {
+        width: 40%;
+    }
+    
+    .leaderboard-table th:nth-child(3) {
+        width: 20%; /* Total Points */
+    }
+    
+    .leaderboard-table th:nth-child(4) {
+        width: 20%; /* Members */
+    }
+}
+
+@media (max-width: 480px) {
+    .leaderboard-table th:nth-child(2) {
+        width: 35%;
+    }
+    
+    .leaderboard-table th:nth-child(3) {
+        width: 20%; /* Total Points */
+    }
+    
+    .leaderboard-table th:nth-child(4) {
+        width: 20%; /* Members */
+        font-size: 8px;
+    }
+}

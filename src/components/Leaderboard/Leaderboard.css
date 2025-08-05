@@ -1,0 +1,443 @@
+/* Leaderboard Styles */
+.leaderboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #2b2a28;
+    color: white;
+}
+
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.leaderboard-header h1 {
+    color: #6dba76;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6dba76;
+}
+
+.stat-label {
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+
+.leaderboard-table {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.leaderboard-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th {
+    background: #156082;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-controls span {
+    font-weight: 600;
+}
+
+.inline-select {
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.inline-select:focus {
+    outline: none;
+    border-color: #6dba76;
+}
+
+.inline-select option {
+    background: #156082;
+    color: white;
+}
+
+/* Legacy filter styles for backward compatibility */
+.classification-filter,
+.sort-filter {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: 2px solid #6dba76;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2b2a28, #3a3a3a);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.classification-filter:hover,
+.sort-filter:hover {
+    border-color: #90EE90;
+    box-shadow: 0 4px 8px rgba(109, 186, 118, 0.3);
+    transform: translateY(-1px);
+}
+
+.classification-filter:focus,
+.sort-filter:focus {
+    outline: none;
+    border-color: #90EE90;
+    box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.25);
+}
+
+.classification-filter option,
+.sort-filter option {
+    background: #2b2a28;
+    color: white;
+    padding: 8px;
+    font-weight: 500;
+}
+
+.classification-filter option:hover,
+.sort-filter option:hover {
+    background: #6dba76;
+    color: #2b2a28;
+}
+
+.leaderboard-table td {
+    padding: 15px;
+    transition: background-color 0.3s ease;
+    vertical-align: middle;
+}
+
+.leaderboard-table tr:hover {
+    background-color: rgba(109, 186, 118, 0.1);
+}
+
+.leaderboard-table tr.expanded {
+    background-color: rgba(21, 96, 130, 0.1);
+}
+
+.rank {
+    font-weight: bold;
+    color: #2b2a28;
+    position: relative;
+}
+
+.medal {
+    margin-left: 8px;
+    font-size: 1.2rem;
+}
+
+.top-three {
+    background: #6dba76;
+    color: #2b2a28;
+}
+
+.top-three:hover {
+    background: #156082;
+    color: white;
+}
+
+/* Position-specific colors */
+.rank-1 {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #2b2a28;
+}
+
+.rank-1:hover {
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    color: #2b2a28;
+}
+
+.rank-2 {
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    color: #2b2a28;
+}
+
+.rank-2:hover {
+    background: linear-gradient(135deg, #A9A9A9, #C0C0C0);
+    color: #2b2a28;
+}
+
+.rank-3 {
+    background: linear-gradient(135deg, #CD7F32, #B8860B);
+    color: white;
+}
+
+.rank-3:hover {
+    background: linear-gradient(135deg, #B8860B, #CD7F32);
+    color: white;
+}
+
+.rank-4, .rank-5 {
+    background: linear-gradient(135deg, #9B59B6, #8E44AD);
+    color: white;
+}
+
+.rank-4:hover, .rank-5:hover {
+    background: linear-gradient(135deg, #8E44AD, #9B59B6);
+    color: white;
+}
+
+.team-name {
+    font-weight: 600;
+    color: #2b2a28;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.expand-icon {
+    display: none;
+}
+
+.total-points {
+    font-weight: bold;
+    color: #2b2a28;
+}
+
+.pj-points {
+    color: #156082;
+    font-weight: 600;
+}
+
+.pcc-points {
+    color: #156082;
+    font-weight: 600;
+}
+
+.members {
+    text-align: center;
+    color: #2b2a28;
+}
+
+.individual-name {
+    font-weight: 600;
+    color: #2b2a28;
+}
+
+.team {
+    color: #2b2a28;
+}
+
+/* History Row Styles */
+.history-row {
+    background-color: rgba(109, 186, 118, 0.05);
+    border-top: none;
+}
+
+.history-row td {
+    padding: 0;
+    border-bottom: none;
+}
+
+.team-history,
+.individual-history {
+    padding: 20px;
+    background: white;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-history h4,
+.individual-history h4 {
+    color: #2b2a28;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #6dba76;
+    padding-bottom: 8px;
+}
+
+.history-list {
+    margin-bottom: 15px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(109, 186, 118, 0.2);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.member-name {
+    font-weight: 600;
+    color: #2b2a28;
+    font-size: 0.95rem;
+}
+
+.activity-description {
+    color: #156082;
+    font-size: 0.9rem;
+}
+
+.activity-date {
+    color: #2b2a28;
+    font-size: 0.8rem;
+}
+
+.history-points {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.point-type {
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(109, 186, 118, 0.1);
+    color: #6dba76;
+}
+
+.point-value {
+    font-weight: bold;
+    color: #6dba76;
+    font-size: 0.9rem;
+}
+
+.history-footer {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(109, 186, 118, 0.2);
+}
+
+.see-more-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    background: #6dba76;
+    color: #2b2a28;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.see-more-btn:hover {
+    background: #156082;
+    color: white;
+}
+
+.loading-history {
+    text-align: center;
+    color: #2b2a28;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .leaderboard-container {
+        padding: 10px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .leaderboard-table {
+        overflow-x: auto;
+    }
+    
+    .leaderboard-table table {
+        min-width: 600px;
+    }
+    
+    .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .history-points {
+        align-self: flex-end;
+    }
+    
+    /* Mobile alignment fixes */
+    .leaderboard-table th {
+        text-align: center;
+        position: relative;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .inline-select {
+        font-size: 0.7rem;
+    }
+    
+    .classification-filter,
+    .sort-filter {
+        margin-left: 0;
+        margin-top: 8px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .rank {
+        text-align: center;
+    }
+    
+    .team-name,
+    .individual-name {
+        text-align: center;
+        justify-content: center;
+    }
+} 

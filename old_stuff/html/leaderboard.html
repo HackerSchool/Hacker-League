@@ -1,0 +1,71 @@
+// In the renderLeaderboard function, update the table header HTML:
+
+let tableHTML = `
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>
+                    <div class="header-controls">
+                        <span>Rank</span>
+                        <select id="pointsType" class="inline-select">
+                            <option value="total" ${pointsType === 'total' ? 'selected' : ''}>Total</option>
+                            <option value="pj" ${pointsType === 'pj' ? 'selected' : ''}>PJ</option>
+                            <option value="pcc" ${pointsType === 'pcc' ? 'selected' : ''}>PCC</option>
+                        </select>
+                    </div>
+                </th>
+                <th>
+                    <div class="header-controls">
+                        <span>${classificationType === 'team' ? 'Team' : 'Name'}</span>
+                        <select id="classificationType" class="inline-select">
+                            <option value="team" ${classificationType === 'team' ? 'selected' : ''}>Teams</option>
+                            <option value="individual" ${classificationType === 'individual' ? 'selected' : ''}>Individuals</option>
+                        </select>
+                    </div>
+                </th>
+                <th>Total Points</th>
+                ${classificationType === 'individual' ? '<th>Team</th>' : '<th>Members</th>'}
+                <th>PJ Points</th>
+                <th>PCC Points</th>
+            </tr>
+        </thead>
+        <tbody>
+`;
+
+// And update the table body rows:
+sortedData.forEach((item, index) => {
+    const rank = index + 1;
+    
+    const rankClass = rank <= 5 ? `rank-${rank}` : '';
+
+    tableHTML += `
+        <tr class="${rankClass} clickable-row" data-team="${item.name}">
+            <td class="rank-cell">
+                <span class="rank-number">${rank}</span>
+            </td>
+            <td class="name-cell">${item.name}</td>
+            <td class="points-cell">${item.totalPoints}</td>
+            ${classificationType === 'individual' ? 
+                `<td class="team-cell">${item.team}</td>` : 
+                `<td class="members-cell">${item.members} members</td>`
+            }
+            <td class="pj-points">${item.pjPoints}</td>
+            <td class="pcc-points">${item.pccPoints}</td>
+        </tr>
+        <tr class="history-row" id="history-${item.name.replace(/\s+/g, '-')}" style="display: none;">
+            <td colspan="6" class="history-cell">
+                <div class="history-content">
+                    <h4>📊 Recent Activity</h4>
+                    <div class="history-list" id="history-list-${item.name.replace(/\s+/g, '-')}">
+                        <div class="loading">Loading history...</div>
+                    </div>
+                    <div class="history-footer">
+                        <button class="see-more-btn" onclick="window.location.href='/history'">
+                            See more...
+                        </button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    `;
+});
