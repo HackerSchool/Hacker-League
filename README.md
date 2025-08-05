@@ -130,7 +130,7 @@ src/
 ### Test Users
 
 The application includes mock users for testing:
-- **admin** - Administrator with full access
+- **admin** _(password: admin)_ - Administrator with full access 
 - **alexchen** - Team leader with member access
 - **mariasantos** - Regular member
 - **davidkim** - Team leader with member access
