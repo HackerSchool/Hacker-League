@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #156082;
+    background-color: #2b2a28;
     padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -16,10 +16,13 @@
 .navbar-brand {
     display: flex;
     align-items: center;
+    padding: 2px 5px !important;
     text-decoration: none;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
+    color: #6dba83;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-style: bold;
 }
 
 .navbar-logo {
@@ -34,16 +37,22 @@
 }
 
 .navbar-link {
-    color: white;
+    color: #6dba83;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: .5rem .5rem;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .navbar-link:hover {
     background-color: rgba(109, 186, 118, 0.2);
 }
+
+
 
 .navbar-auth {
     display: flex;
@@ -57,7 +66,10 @@
 }
 
 .navbar .username {
-    color: #90EE90;
+    background: linear-gradient(135deg, #4ecdff, #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 500;
 }
 
@@ -97,7 +109,7 @@
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: #156082;
+        background-color: #2b2a28;
         flex-direction: column;
         padding: 2rem;
         transition: left 0.3s;

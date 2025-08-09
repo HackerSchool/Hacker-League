@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Layout/Navbar';
 import PrivateRoute from './components/PrivateRoute';
@@ -11,6 +11,7 @@ import ProfilePage from './pages/ProfilePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import AdminPage from './pages/AdminPage';
 import HistoryPage from './pages/HistoryPage';
+import HallOfFamePage from './pages/HallOfFamePage';
 
 function App() {
     return (
@@ -44,6 +45,14 @@ function App() {
                                 element={
                                     <PrivateRoute>
                                         <HistoryPage />
+                                    </PrivateRoute>
+                                } 
+                            />
+                            <Route 
+                                path="/hall-of-fame" 
+                                element={
+                                    <PrivateRoute>
+                                        <HallOfFamePage />
                                     </PrivateRoute>
                                 } 
                             />

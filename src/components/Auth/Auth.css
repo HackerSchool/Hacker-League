@@ -55,6 +55,8 @@
     padding: 0 1rem;
     color: #666;
     font-size: 14px;
+    position: relative;
+    z-index: 1;
 }
 
 .auth-footer {

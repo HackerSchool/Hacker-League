@@ -189,9 +189,25 @@ const LeaderboardTable = () => {
                                     </div>
                                 </th>
                                 <th>Members</th>
-                                <th>PJ Points</th>
-                                <th>PCC Points</th>                                
-                                <th>Total Points</th>
+                                {sortBy === 'pjPoints' ? (
+                                    <>
+                                        <th>PCC Points</th>
+                                        <th>Total Points</th>
+                                        <th className="highlighted-column">PJ Points</th>
+                                    </>
+                                ) : sortBy === 'pccPoints' ? (
+                                    <>
+                                        <th>PJ Points</th>
+                                        <th>Total Points</th>
+                                        <th className="highlighted-column">PCC Points</th>
+                                    </>
+                                ) : (
+                                    <>
+                                        <th>PJ Points</th>
+                                        <th>PCC Points</th>
+                                        <th className="highlighted-column">Total Points</th>
+                                    </>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
@@ -203,23 +219,43 @@ const LeaderboardTable = () => {
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <td className="rank">
-                                            {index + 1}
-                                            {index === 0 && <span className="medal">🥇</span>}
-                                            {index === 1 && <span className="medal">🥈</span>}
-                                            {index === 2 && <span className="medal">🥉</span>}
-                                            {index === 3 && <span className="medal">🎖️</span>}
-                                            {index === 4 && <span className="medal">🎖️</span>}
+                                            <div className="rank-content">
+                                                {index + 1}
+                                                {index === 0 && <span className="medal">🥇</span>}
+                                                {index === 1 && <span className="medal">🥈</span>}
+                                                {index === 2 && <span className="medal">🥉</span>}
+                                                {index === 3 && <span className="medal">🎖️</span>}
+                                                {index === 4 && <span className="medal">🎖️</span>}
+                                            </div>
                                         </td>
                                         <td className="team-name">
-                                            {team.name}
-                                            <span className="expand-icon">
-                                                {expandedTeams.has(team.name) ? '▼' : '▶'}
-                                            </span>
+                                            <div className="team-name-content">
+                                                {team.name}
+                                                <span className="expand-icon">
+                                                    {expandedTeams.has(team.name) ? '▼' : '▶'}
+                                                </span>
+                                            </div>
                                         </td>
                                         <td className="members">{team.members}</td>
-                                        <td className="pj-points">{team.pjPoints}</td>
-                                        <td className="pcc-points">{team.pccPoints}</td>
-                                        <td className="total-points">{team.totalPoints}</td>
+                                        {sortBy === 'pjPoints' ? (
+                                            <>
+                                                <td className="pcc-points">{team.pccPoints}</td>
+                                                <td className="total-points dimmed">{team.totalPoints}</td>
+                                                <td className="pj-points highlighted">{team.pjPoints}</td>
+                                            </>
+                                        ) : sortBy === 'pccPoints' ? (
+                                            <>
+                                                <td className="pj-points">{team.pjPoints}</td>
+                                                <td className="total-points dimmed">{team.totalPoints}</td>
+                                                <td className="pcc-points highlighted">{team.pccPoints}</td>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td className="pj-points">{team.pjPoints}</td>
+                                                <td className="pcc-points">{team.pccPoints}</td>
+                                                <td className="total-points highlighted">{team.totalPoints}</td>
+                                            </>
+                                        )}
                                         
                                     </tr>
                                     {expandedTeams.has(team.name) && (
@@ -300,9 +336,25 @@ const LeaderboardTable = () => {
                                     </div>
                                 </th>
                                 <th>Team</th>
-                                <th>PJ Points</th>
-                                <th>PCC Points</th>
-                                <th>Total Points</th>
+                                {sortBy === 'pjPoints' ? (
+                                    <>
+                                        <th>PCC Points</th>
+                                        <th>Total Points</th>
+                                        <th className="highlighted-column">PJ Points</th>
+                                    </>
+                                ) : sortBy === 'pccPoints' ? (
+                                    <>
+                                        <th>PJ Points</th>
+                                        <th>Total Points</th>
+                                        <th className="highlighted-column">PCC Points</th>
+                                    </>
+                                ) : (
+                                    <>
+                                        <th>PJ Points</th>
+                                        <th>PCC Points</th>
+                                        <th className="highlighted-column">Total Points</th>
+                                    </>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
@@ -314,23 +366,43 @@ const LeaderboardTable = () => {
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <td className="rank">
-                                            {index + 1}
-                                            {index === 0 && <span className="medal">🥇</span>}
-                                            {index === 1 && <span className="medal">🥈</span>}
-                                            {index === 2 && <span className="medal">🥉</span>}
-                                            {index === 3 && <span className="medal">🎖️</span>}
-                                            {index === 4 && <span className="medal">🎖️</span>}
+                                            <div className="rank-content">
+                                                {index + 1}
+                                                {index === 0 && <span className="medal">🥇</span>}
+                                                {index === 1 && <span className="medal">🥈</span>}
+                                                {index === 2 && <span className="medal">🥉</span>}
+                                                {index === 3 && <span className="medal">🎖️</span>}
+                                                {index === 4 && <span className="medal">🎖️</span>}
+                                            </div>
                                         </td>
                                         <td className="individual-name">
-                                            {individual.name}
-                                            <span className="expand-icon">
-                                                {expandedIndividuals.has(individual.name) ? '▼' : '▶'}
-                                            </span>
+                                            <div className="team-name-content">
+                                                {individual.name}
+                                                <span className="expand-icon">
+                                                    {expandedIndividuals.has(individual.name) ? '▼' : '▶'}
+                                                </span>
+                                            </div>
                                         </td>
                                         <td className="team">{individual.team}</td>
-                                        <td className="pj-points">{individual.pjPoints}</td>
-                                        <td className="pcc-points">{individual.pccPoints}</td>
-                                        <td className="total-points">{individual.totalPoints}</td>
+                                        {sortBy === 'pjPoints' ? (
+                                            <>
+                                                <td className="pcc-points">{individual.pccPoints}</td>
+                                                <td className="total-points dimmed">{individual.totalPoints}</td>
+                                                <td className="pj-points highlighted">{individual.pjPoints}</td>
+                                            </>
+                                        ) : sortBy === 'pccPoints' ? (
+                                            <>
+                                                <td className="pj-points">{individual.pjPoints}</td>
+                                                <td className="total-points dimmed">{individual.totalPoints}</td>
+                                                <td className="pcc-points highlighted">{individual.pccPoints}</td>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td className="pj-points">{individual.pjPoints}</td>
+                                                <td className="pcc-points">{individual.pccPoints}</td>
+                                                <td className="total-points highlighted">{individual.totalPoints}</td>
+                                            </>
+                                        )}
                                     </tr>
                                     {expandedIndividuals.has(individual.name) && (
                                         <tr className="history-row">

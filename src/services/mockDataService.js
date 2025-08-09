@@ -235,5 +235,57 @@ export const mockUserAPI = {
         await new Promise(resolve => setTimeout(resolve, 300));
         // Simulate logo upload
         return { success: true, message: 'Logo uploaded successfully' };
+    },
+
+    // Hall of Fame data service
+    getHallOfFameData: async () => {
+        await new Promise(resolve => setTimeout(resolve, 200));
+        return {
+            categories: [
+                {
+                    id: 'pitch-month',
+                    title: 'Pitch do Mês',
+                    subtitle: 'Equipa que ganhou mais pontos no pitch da HackNight anterior',
+                    icon: '🎯',
+                    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    winner: {
+                        name: 'Cyber Warriors',
+                        photo: '/images/team-cyber-warriors.jpg',
+                        score: '1,200 pts',
+                        achievement: 'Pitch revolucionário sobre IA em Cybersecurity',
+                        badge: 'gold',
+                        streak: 2
+                    },
+                    rarity: 'legendary'
+                },
+                {
+                    id: 'rising-star',
+                    title: 'Estrela em Ascensão',
+                    subtitle: 'Equipa que ganhou mais pontos',
+                    icon: '⭐',
+                    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                    winner: {
+                        name: 'Code Breakers',
+                        photo: '/images/team-code-breakers.jpg',
+                        score: '2,650 pts',
+                        achievement: 'Crescimento de 400% nos últimos 3 meses',
+                        badge: 'gold',
+                        streak: 1
+                    },
+                    rarity: 'epic'
+                }
+            ],
+            specialAchievements: [
+                {
+                    id: 'grand-slam',
+                    title: 'Grand Slam',
+                    description: 'Conquistou 4+ categorias diferentes no mesmo mês',
+                    winner: 'Alex Chen',
+                    icon: '🏆',
+                    rarity: 'mythic'
+                }
+            ],
+            lastUpdated: new Date().toISOString()
+        };
     }
 }; 

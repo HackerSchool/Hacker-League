@@ -42,7 +42,7 @@ code {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -56,13 +56,16 @@ code {
 }
 
 .btn-secondary {
-  background-color: #156082;
+  background: linear-gradient(135deg, #6dba76, #3a86ff);
   color: white;
+  border: none;
 }
 
 .btn-secondary:hover {
-  background-color: #6dba76;
-  color: #2b2a28;
+  background: linear-gradient(135deg, #3a86ff, #6dba76);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(109, 186, 118, 0.3);
 }
 
 .form-group {

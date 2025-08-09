@@ -21,7 +21,7 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" className="navbar-brand">
-                    <img src="/images/HS_NOVO.svg" alt="Hacker League" className="navbar-logo" />
+                    <img src="/images/logo2.png" alt="Hacker League" className="navbar-logo" />
                     Hacker League
                 </Link>
 
@@ -31,17 +31,20 @@ const Navbar = () => {
                             <Link to="/leaderboard" className="navbar-link">
                                 Leaderboard
                             </Link>
-                            <Link to="/profile" className="navbar-link">
-                                Profile
-                            </Link>
                             <Link to="/history" className="navbar-link">
                                 History
                             </Link>
+                            <Link to="/hall-of-fame" className="navbar-link">
+                                Hall of Fame
+                            </Link>
                             {user?.roles?.includes('admin') && (
-                                <Link to="/admin" className="navbar-link">
+                                <Link to="/admin" className="navbar-link navbar-link-admin">
                                     Admin
                                 </Link>
                             )}
+                            <Link to="/profile" className="navbar-link">
+                                Profile
+                            </Link>
                         </>
                     )}
                 </div>

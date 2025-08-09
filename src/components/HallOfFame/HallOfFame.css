@@ -1,0 +1,598 @@
+/* Hall of Fame Styles */
+.hall-of-fame {
+    min-height: 100vh;
+    background: transparent;
+    color: white;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.hall-of-fame::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Header Styles */
+.hall-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.hall-title-container {
+    margin-bottom: 2rem;
+}
+
+.hall-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffd700, #ffed4e, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.title-icon {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    margin-right: 1rem;
+}
+
+.title-sparkle {
+    display: inline-block;
+    animation: sparkle 1.5s ease-in-out infinite;
+    margin-left: 1rem;
+}
+
+.hall-subtitle {
+    font-size: 1.2rem;
+    color: #b8c1ec;
+    margin: 1rem 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+/* Filter Styles */
+.filter-container {
+    margin-top: 2rem;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.filter-btn.rarity-rare { border-color: #3498db; }
+.filter-btn.rarity-epic { border-color: #9b59b6; }
+.filter-btn.rarity-legendary { border-color: #f39c12; }
+.filter-btn.rarity-mythic { border-color: #e74c3c; }
+
+/* Categories Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.category-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.category-card.animated {
+    transform: translateY(0);
+    opacity: 0.85;
+}
+
+.category-card.animated:hover {
+    opacity: 1;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+    opacity: 0.8;
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient);
+    opacity: 0;
+    filter: blur(40px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.category-card:hover .card-glow {
+    opacity: 0.1;
+}
+
+/* Rarity Borders */
+.rarity-rare { border-color: rgba(52, 152, 219, 0.3); }
+.rarity-epic { border-color: rgba(155, 89, 182, 0.3); }
+.rarity-legendary { border-color: rgba(243, 156, 18, 0.3); }
+.rarity-mythic { border-color: rgba(231, 76, 60, 0.3); }
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.rarity-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Content */
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff, #b8c1ec);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.category-subtitle {
+    color: #b8c1ec;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+/* Winner Section */
+.winner-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.winner-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.winner-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.winner-avatar:hover img {
+    transform: scale(1.1);
+}
+
+.badge-overlay {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 2px solid #ffd700;
+}
+
+.streak-indicator {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.winner-info {
+    flex: 1;
+}
+
+.winner-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #ffd700;
+}
+
+.winner-score {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4ecdff;
+    margin-bottom: 0.5rem;
+}
+
+.winner-achievement {
+    font-size: 0.85rem;
+    color: #b8c1ec;
+    line-height: 1.3;
+    font-style: italic;
+}
+
+/* Card Particles */
+.card-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffd700;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 4s infinite;
+}
+
+.particle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+    top: 80%;
+    left: 40%;
+    animation-delay: 2s;
+}
+
+/* Special Achievements */
+.special-achievements {
+    margin-bottom: 4rem;
+}
+
+.special-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ff6b6b, #ffd700, #4ecdff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.special-icon {
+    display: inline-block;
+    animation: rotate 4s linear infinite;
+    margin-right: 1rem;
+}
+
+.special-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.special-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.special-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.special-icon-large {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.special-achievement-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffd700;
+}
+
+.special-description {
+    color: #b8c1ec;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.special-winner {
+    color: #4ecdff;
+    font-size: 1rem;
+}
+
+/* Footer */
+.hall-footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.rotation-info h3 {
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.rotation-info p {
+    color: #b8c1ec;
+    margin-bottom: 1rem;
+}
+
+.next-update {
+    color: #4ecdff;
+    font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.3);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-40px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hall-of-fame {
+        padding: 1rem;
+    }
+    
+    .hall-title {
+        font-size: 2.5rem;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .category-card {
+        padding: 1.5rem;
+    }
+    
+    .winner-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .special-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hall-title {
+        font-size: 2rem;
+    }
+    
+    .title-icon,
+    .title-sparkle {
+        display: block;
+        margin: 0.5rem auto;
+    }
+    
+    .category-card {
+        padding: 1rem;
+    }
+    
+    .winner-avatar img {
+        width: 60px;
+        height: 60px;
+    }
+}
