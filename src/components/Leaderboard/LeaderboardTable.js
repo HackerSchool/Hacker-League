@@ -17,6 +17,7 @@ const LeaderboardTable = () => {
     const [teamHistory, setTeamHistory] = useState({});
     const [individualHistory, setIndividualHistory] = useState({});
 
+
     useEffect(() => {
         fetchLeaderboardData();
     }, []);
@@ -188,7 +189,6 @@ const LeaderboardTable = () => {
                                         </select>
                                     </div>
                                 </th>
-                                <th>Members</th>
                                 {sortBy === 'pjPoints' ? (
                                     <>
                                         <th>PCC Points</th>
@@ -231,12 +231,8 @@ const LeaderboardTable = () => {
                                         <td className="team-name">
                                             <div className="team-name-content">
                                                 {team.name}
-                                                <span className="expand-icon">
-                                                    {expandedTeams.has(team.name) ? '▼' : '▶'}
-                                                </span>
                                             </div>
                                         </td>
-                                        <td className="members">{team.members}</td>
                                         {sortBy === 'pjPoints' ? (
                                             <>
                                                 <td className="pcc-points">{team.pccPoints}</td>
@@ -260,7 +256,7 @@ const LeaderboardTable = () => {
                                     </tr>
                                     {expandedTeams.has(team.name) && (
                                         <tr className="history-row">
-                                            <td colSpan="6">
+                                            <td colSpan="5">
                                                 <div className="team-history">
                                                     <h4>Recent Activity</h4>
                                                     {teamHistory[team.name] ? (
@@ -270,8 +266,8 @@ const LeaderboardTable = () => {
                                                                     <div key={idx} className="history-item">
                                                                         <div className="history-info">
                                                                             <span className="member-name">{entry.membro}</span>
-                                                                            <span className="activity-description">{entry.descrição}</span>
                                                                             <span className="activity-date">{formatDate(entry.data)}</span>
+                                                                            <span className="activity-description">{entry.descrição}</span>
                                                                         </div>
                                                                         <div className="history-points">
                                                                             <span 
@@ -298,7 +294,7 @@ const LeaderboardTable = () => {
                                                             </div>
                                                         </>
                                                     ) : (
-                                                        <div className="loading-history">Loading history...</div>
+                                                        <div className="loading-history">Loading log...</div>
                                                     )}
                                                 </div>
                                             </td>
@@ -335,7 +331,6 @@ const LeaderboardTable = () => {
                                         </select>
                                     </div>
                                 </th>
-                                <th>Team</th>
                                 {sortBy === 'pjPoints' ? (
                                     <>
                                         <th>PCC Points</th>
@@ -378,12 +373,8 @@ const LeaderboardTable = () => {
                                         <td className="individual-name">
                                             <div className="team-name-content">
                                                 {individual.name}
-                                                <span className="expand-icon">
-                                                    {expandedIndividuals.has(individual.name) ? '▼' : '▶'}
-                                                </span>
                                             </div>
                                         </td>
-                                        <td className="team">{individual.team}</td>
                                         {sortBy === 'pjPoints' ? (
                                             <>
                                                 <td className="pcc-points">{individual.pccPoints}</td>
@@ -406,7 +397,7 @@ const LeaderboardTable = () => {
                                     </tr>
                                     {expandedIndividuals.has(individual.name) && (
                                         <tr className="history-row">
-                                            <td colSpan="6">
+                                            <td colSpan="5">
                                                 <div className="individual-history">
                                                     <h4>Recent Activity</h4>
                                                     {individualHistory[individual.name] ? (
@@ -415,8 +406,8 @@ const LeaderboardTable = () => {
                                                                 {individualHistory[individual.name].map((entry, idx) => (
                                                                     <div key={idx} className="history-item">
                                                                         <div className="history-info">
-                                                                            <span className="activity-description">{entry.descrição}</span>
                                                                             <span className="activity-date">{formatDate(entry.data)}</span>
+                                                                            <span className="activity-description">{entry.descrição}</span>
                                                                         </div>
                                                                         <div className="history-points">
                                                                             <span 
@@ -443,7 +434,7 @@ const LeaderboardTable = () => {
                                                             </div>
                                                         </>
                                                     ) : (
-                                                        <div className="loading-history">Loading history...</div>
+                                                        <div className="loading-history">Loading log...</div>
                                                     )}
                                                 </div>
                                             </td>

@@ -31,8 +31,8 @@ const Navbar = () => {
                             <Link to="/leaderboard" className="navbar-link">
                                 Leaderboard
                             </Link>
-                            <Link to="/history" className="navbar-link">
-                                History
+                                                    <Link to="/history" className="navbar-link">
+                            Log
                             </Link>
                             <Link to="/hall-of-fame" className="navbar-link">
                                 Hall of Fame

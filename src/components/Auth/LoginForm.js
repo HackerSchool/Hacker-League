@@ -62,6 +62,8 @@ const LoginForm = () => {
                             name="username"
                             value={formData.username}
                             onChange={handleChange}
+                            placeholder="Enter your username"
+                            autoComplete="username"
                             required
                             disabled={loading}
                         />
@@ -75,6 +77,8 @@ const LoginForm = () => {
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
+                            placeholder="Enter your password"
+                            autoComplete="current-password"
                             required
                             disabled={loading}
                         />
@@ -98,11 +102,11 @@ const LoginForm = () => {
                     className="btn btn-secondary auth-btn"
                     disabled={loading}
                 >
-                    Login with Fenix
+                    Login with Fenix ID
                 </button>
 
                 <div className="auth-footer">
-                    <p>Don't have an account? <a href="/register">Register here</a></p>
+                    <p>Contact an administrator to create your account</p>
                 </div>
             </div>
         </div>

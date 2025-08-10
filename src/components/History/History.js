@@ -111,15 +111,15 @@ const History = () => {
     };
 
     if (loading) {
-        return <div className="loading">Loading history...</div>;
+        return <div className="loading">Loading log...</div>;
     }
 
     return (
         <div className="history-container">
-            <header className="history-header">
-                <h1>📊 Points History</h1>
-                <p>Track all point activities and achievements</p>
-            </header>
+                            <header className="history-header">
+                    <h1>📊 Points Log</h1>
+                    <p>Track all point activities and achievements</p>
+                </header>
 
             <div className="history-content">
                 <div className="history-table">
@@ -178,7 +178,7 @@ const History = () => {
                             {pageData.length === 0 ? (
                                 <tr>
                                     <td colSpan={entityType === 'members' ? 5 : 4} className="no-data">
-                                        No history entries found for the selected filters.
+                                        No log entries found for the selected filters.
                                     </td>
                                 </tr>
                             ) : (

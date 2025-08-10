@@ -359,7 +359,7 @@ const UserProfile = () => {
                             <>
                                 <button 
                                     type="submit" 
-                                    className="btn btn-primary"
+                                    className="btn btn-secondary"
                                     disabled={saving}
                                 >
                                     {saving ? 'Saving...' : 'Save Changes'}
@@ -384,7 +384,7 @@ const UserProfile = () => {
                     <div className="profile-actions">
                         <button 
                             type="button" 
-                            className="btn btn-primary"
+                            className="btn btn-secondary"
                             onClick={() => setIsEditing(true)}
                         >
                             Edit Profile
